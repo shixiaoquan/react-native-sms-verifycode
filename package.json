@@ -1,6 +1,6 @@
 {
   "name": "react-native-sms-verifycode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A component for entering a set of SMS verification codes for react-native, Compatible for Android and iOS",
   "main": "index.js",
   "scripts": {
