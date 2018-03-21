@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-21 09:00:14
+* @Last Modified time: 2018-03-21 15:34:09
 */
 
 'use strict'
@@ -16,7 +16,6 @@ import {Colors, Constant, getScreenWidth} from './util.js'
 
 class VerifyCode extends Component {
   static propTypes = {
-    onChangeText: PropTypes.func,
     verifyCodeLength: PropTypes.number,
     containerPaddingVertical: PropTypes.number,
     containerPaddingHorizontal: PropTypes.number,
@@ -28,6 +27,7 @@ class VerifyCode extends Component {
     codeBorderColor: PropTypes.string,
     codeFontSize: PropTypes.number,
     codeFontColor: PropTypes.string,
+    onInputCompleted: PropTypes.func,
   }
 
   constructor(props) {
@@ -98,7 +98,7 @@ class VerifyCode extends Component {
           underlineColorAndroid={'transparent'}
           caretHidden
           autoFocus
-          maxLength={6}
+          maxLength={verifyCodeLength}
           keyboardType={'numeric'}
           style={styles.hiddenTextInput}
           value={this.state.text}
@@ -144,7 +144,9 @@ class VerifyCode extends Component {
         const codeText = codeArray.reduce(reducer)
         this.showAlert(codeText, codeArray)
       } else {
-        if (codeLength === Constant.verifyCodeLength) {
+        const _verifyCodeLength = this.props.verifyCodeLength ? this.props.verifyCodeLength : Constant.verifyCodeLength
+        console.log('_verifyCodeLength:', _verifyCodeLength)
+        if (codeLength === _verifyCodeLength) {
           this.props.onInputCompleted && this.props.onInputCompleted(text)
         }
         this.setState({
