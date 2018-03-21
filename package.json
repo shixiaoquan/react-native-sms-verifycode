@@ -1,5 +1,5 @@
 {
-  "name": "rn-verifycode",
+  "name": "react-native-sms-verifycode",
   "version": "1.0.0",
   "description": "A component for entering a set of verification codes for react-native, Compatible for Android and iOS",
   "main": "index.js",
