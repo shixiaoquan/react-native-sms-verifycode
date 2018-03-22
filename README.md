@@ -141,7 +141,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | Name | isRequired | Description |
 |:-:|:-:|:-:|
 | onInputCompleted | NO | 输入完成时，回调的方法 |
-| reset | NO | 清空输入的内容，并将焦点设置在第一个输入框 |
+| reset | NO | 清空输入的内容，并将焦点设置在第一个输入框，**使用ref调用** |
 
 
 
