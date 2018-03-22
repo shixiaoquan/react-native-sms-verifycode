@@ -3,19 +3,19 @@
 
 ## Screen Capture
 
-[Example code](https://github.com/shixiaoquan/react-native-sms-verifycode/tree/master/Example)
-
 ### 支持 ios、android
 
 |![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|
 |:-:|:-:|
 |on Android|on iOS|
 
-### Installation
+## Installation
 
 ```bash
 $ npm install react-native-sms-verifycode --save
 ```
+
+## Usage
 
 ### Basic Usage
 
