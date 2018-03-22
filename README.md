@@ -1,6 +1,3 @@
-## react-native-sms-verifycode
-一个用于填写短信验证码的React Native组件， 适配了android和iOS
-
 ## Screen Capture
 
 ### 支持 ios、android
