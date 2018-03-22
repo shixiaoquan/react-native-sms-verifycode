@@ -77,8 +77,8 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-2.png)|
-|:-:|:-:|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-3.png)|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-2.png)|
+|:-:|:-:|:-:|
 
 #### 设置文本框的样式
 
@@ -98,8 +98,8 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-2.png)|
-|:-:|:-:|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-3.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-2.png)|
+|:-:|:-:|:-:|
 
 #### 设置文本的样式
 
@@ -114,8 +114,8 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-2.png)|
-|:-:|:-:|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-2.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-3.png)|
+|:-:|:-:|:-:|
 
 ## **Properties**
 
