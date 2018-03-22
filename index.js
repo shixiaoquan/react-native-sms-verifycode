@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-21 15:34:09
+* @Last Modified time: 2018-03-22 09:44:11
 */
 
 'use strict'
@@ -103,7 +103,7 @@ class VerifyCode extends Component {
           style={styles.hiddenTextInput}
           value={this.state.text}
           onChangeText={(text) => {
-            // this.setState({text: text})
+            this.setState({text: text})
             this._onChangeText(text)
             // onInputCompleted(text)
           }}
@@ -139,9 +139,11 @@ class VerifyCode extends Component {
       let codeArray = []
       codeArray = text.split('')
       if (isNaN(codeArray[codeLength - 1])) {
+        console.log('1 codeArray:', codeArray)
         codeArray = codeArray.filter(code => !isNaN(code))
+        console.log('2 codeArray:', codeArray)
         const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`
-        const codeText = codeArray.reduce(reducer)
+        const codeText = codeArray.length > 0 ? codeArray.reduce(reducer) : ``
         this.showAlert(codeText, codeArray)
       } else {
         const _verifyCodeLength = this.props.verifyCodeLength ? this.props.verifyCodeLength : Constant.verifyCodeLength
@@ -149,6 +151,7 @@ class VerifyCode extends Component {
         if (codeLength === _verifyCodeLength) {
           this.props.onInputCompleted && this.props.onInputCompleted(text)
         }
+        console.log('3 codeArray:', codeArray)
         this.setState({
           text,
           codeArray

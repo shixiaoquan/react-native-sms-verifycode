@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 17:48:16
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-21 08:28:42
+* @Last Modified time: 2018-03-22 09:35:31
 */
 
 import {StyleSheet} from 'react-native'

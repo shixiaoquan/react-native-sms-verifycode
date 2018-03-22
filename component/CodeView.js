@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 21:57:51
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-21 08:54:25
+* @Last Modified time: 2018-03-21 22:19:08
 */
 
 import React from 'react'
@@ -65,6 +65,7 @@ const CodeView = (props) => {
                   borderRadius: codeBorderRadius,
                   borderColor,
                   marginLeft,
+                  backgroundColor: containerBackgroundColor,
                 }
               ]}
             >
@@ -104,7 +105,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   codeView: {
-    backgroundColor: '#F7F8F7',
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center'
