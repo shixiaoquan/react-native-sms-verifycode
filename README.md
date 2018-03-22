@@ -16,7 +16,7 @@ $ npm install react-native-sms-verifycode --save
 
 ### Basic Usage
 
-传如输入完成时的回调函数，即可获取用户输入的内容
+设置输入完成时的回调函数，即可获取用户输入的内容
 
 ```javascript
 import SMSVerifyCode from 'react-native-sms-verifycode'
