@@ -9,7 +9,7 @@
 
 |![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|
 |:-:|:-:|
-|android|iOS|
+|on Android|on iOS|
 
 ### Installation
 
@@ -19,71 +19,15 @@ $ npm install react-native-sms-verifycode --save
 
 ### Basic Usage
 
-You can use pageArray quick generation your app intro with parallax effect. With the basic usage, the Android status bar will be updated to match your slide background color.
+无需设置任何参数，可以直接使用组件
 
-<img src="http://i.giphy.com/l3V0khy22aUviTTaM.gif">
-<img src="./assets/sample-android.gif" width="280">
 
-```javascript
-import React, { Component } from 'react';
-import { AppRegistry, Alert } from 'react-native';
-import AppIntro from 'react-native-app-intro';
 
-class Example extends Component {
-  onSkipBtnHandle = (index) => {
-    Alert.alert('Skip');
-    console.log(index);
-  }
-  doneBtnHandle = () => {
-    Alert.alert('Done');
-  }
-  nextBtnHandle = (index) => {
-    Alert.alert('Next');
-    console.log(index);
-  }
-  onSlideChangeHandle = (index, total) => {
-    console.log(index, total);
-  }
-  render() {
-    const pageArray = [{
-      title: 'Page 1',
-      description: 'Description 1',
-      img: 'https://goo.gl/Bnc3XP',
-      imgStyle: {
-        height: 80 * 2.5,
-        width: 109 * 2.5,
-      },
-      backgroundColor: '#fa931d',
-      fontColor: '#fff',
-      level: 10,
-    }, {
-      title: 'Page 2',
-      description: 'Description 2',
-      img: require('../assets/some_image.png'),
-      imgStyle: {
-        height: 93 * 2.5,
-        width: 103 * 2.5,
-      },
-      backgroundColor: '#a4b602',
-      fontColor: '#fff',
-      level: 10,
-    }];
-    return (
-      <AppIntro
-        onNextBtnClick={this.nextBtnHandle}
-        onDoneBtnClick={this.doneBtnHandle}
-        onSkipBtnClick={this.onSkipBtnHandle}
-        onSlideChange={this.onSlideChangeHandle}
-        pageArray={pageArray}
-      />
-    );
-  }
-}
 
-AppRegistry.registerComponent('Example', () => Example);
-```
 
 ### Advanced Usage
+
+组件支持设置背景色，上下左右的padding，以及文字的大小、颜色、文本框的粗细和颜色
 
 If you need customized page like my Example, you can  pass in `View` component into AppIntro component and set level. Remember any need use parallax effect component, Need to be `<View level={10}></View>` inside.
 
