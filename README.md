@@ -6,10 +6,8 @@
 [Example code](https://github.com/shixiaoquan/react-native-sms-verifycode/tree/master/Example)
 
 ### 支持 ios、android
-<img src="http://i.giphy.com/3o6ozjLoOnYTXfzJgQ.gif">
-<img src="http://gifyu.com/images/android.gif" width="345">
 
-<a href="http://www.freepik.com">Designed by Freepik</a>
+
 
 ### Installation
 
