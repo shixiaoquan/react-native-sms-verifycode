@@ -19,12 +19,32 @@ $ npm install react-native-sms-verifycode --save
 
 ### Basic Usage
 
-无需设置任何参数，可以直接使用组件
+传如输入完成时的回调函数，即可获取用户输入的内容
 
 ```javascript
 import SMSVerifyCode from 'react-native-sms-verifycode'
 ...
-<SMSVerifyCode />
+<SMSVerifyCode
+  ref={ref => (this.verifycode = ref)}
+  onInputCompleted={this.onInputCompleted}
+/>
+
+onInputCompleted = (text) => {
+	Alert.alert(
+	  text,
+	  '本次输入的验证码',
+	  [
+	  	{
+	      text: '确定',
+	    },
+	  ]
+	)
+}
+
+reset = () => {
+	this.verifycode.reset()
+	this.setState({codeText: ''})
+}
 ...        
 ```
 
@@ -102,6 +122,26 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 
 ## **Properties**
 
+| Prop | PropType | Default Value |isRequired| Description |
+|:-:|:-:|:-:|:-:|:-:|
+| verifyCodeLength | number | 6 | NO | 验证码的个数 |
+| containerPaddingVertical | number | 0 | NO | 外层容器的paddingVertical |
+| containerPaddingHorizontal | number | 根据验证码个数自动计算 | NO | 外层容器的paddingHorizontal |
+| containerBackgroundColor | string | #FDFFFD | NO | 外层容器的backgroundColor |
+| codeBorderColor | string | grey | NO | 文本框的颜色 |
+| codeFocusedBorderColor | string | #1192F6 | NO | 当前获得焦点的文本框的颜色 |
+| codeViewWidth | number | 根据验证码个数自动计算 | NO | 文本框的宽度 |
+| codeBorderWidth | number | 1 | NO | 文本框的粗细 |
+| codeBorderRadius | number | 5 | NO | 文本框的圆角大小 |
+| codeFontSize | number | default | NO | 文本的大小 |
+| codeFontColor | string | #222222 | NO | 文本的颜色 |
+
 ## **APIs**
+
+| Name | isRequired | Description |
+|:-:|:-:|:-:|
+| onInputCompleted | NO | 输入完成时，回调的方法 |
+| reset | NO | 清空输入的内容，并将焦点设置在第一个输入框 |
+
 
 

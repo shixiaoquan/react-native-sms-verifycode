@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 21:57:51
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-22 11:01:22
+* @Last Modified time: 2018-03-22 11:49:36
 */
 
 import React from 'react'
@@ -94,6 +94,7 @@ CodeView.propTypes = {
   containerBackgroundColor: PropTypes.string.isRequired,
   codeBorderColor: PropTypes.string.isRequired,
   codeFocusedBorderColor: PropTypes.string.isRequired,
+  codeViewWidth: PropTypes.number.isRequired,
   codeBorderWidth: PropTypes.number.isRequired,
   codeBorderRadius: PropTypes.number.isRequired,
   codeFontSize: PropTypes.number.isRequired,
