@@ -45,7 +45,7 @@ reset = () => {
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-android.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-ios.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-all.gif)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-android.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-ios.png)|![all](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-all.gif)|
 |:-:|:-:|:-:|
 
 ### Advanced Usage
