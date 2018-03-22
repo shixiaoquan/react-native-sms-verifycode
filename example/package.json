@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.2",
-    "react-native-sms-verifycode": "^1.0.3"
+    "react-native-sms-verifycode": "^1.0.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
