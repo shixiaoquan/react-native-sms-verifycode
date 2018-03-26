@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 21:57:51
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-26 15:26:02
+* @Last Modified time: 2018-03-26 15:39:57
 */
 
 import React from 'react'
@@ -28,6 +28,7 @@ const CodeView = (props) => {
     codeBorderColor,
     codeFontSize,
     codeFontColor,
+    secureTextEntry,
     gapWidth,
   } = props
 
@@ -82,7 +83,7 @@ const CodeView = (props) => {
                 {code}
               </Text>
               {
-                true && <View style={[
+                secureTextEntry && <View style={[
                   styles.cover,
                   {
                     width: codeFontSize,
@@ -102,7 +103,7 @@ const CodeView = (props) => {
 
 CodeView.propTypes = {
   codeArray: PropTypes.array.isRequired,
-  verifyCodeLength: PropTypes.number.isRequired,
+  // verifyCodeLength: PropTypes.number.isRequired,
   containerPaddingVertical: PropTypes.number.isRequired,
   containerPaddingHorizontal: PropTypes.number.isRequired,
   containerBackgroundColor: PropTypes.string.isRequired,
@@ -113,6 +114,7 @@ CodeView.propTypes = {
   codeBorderRadius: PropTypes.number.isRequired,
   codeFontSize: PropTypes.number.isRequired,
   codeFontColor: PropTypes.string.isRequired,
+  secureTextEntry: PropTypes.bool.isRequired,
   gapWidth: PropTypes.number.isRequired,
 }
 

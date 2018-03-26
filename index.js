@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-26 15:27:52
+* @Last Modified time: 2018-03-26 15:37:58
 */
 
 'use strict'
@@ -40,6 +40,7 @@ class VerifyCode extends Component {
     codeFontSize: PropTypes.number,
     codeFontColor: PropTypes.string,
     onInputCompleted: PropTypes.func,
+    secureTextEntry: PropTypes.bool,
   }
 
   constructor(props) {
@@ -107,6 +108,7 @@ class VerifyCode extends Component {
       codeBorderRadius = Constant.codeBorderRadius,
       codeFontSize = Constant.codeFontSize,
       codeFontColor = Colors.codeFontColor,
+      secureTextEntry = Constant.secureTextEntry,
     } = this.props
 
     return (
@@ -147,6 +149,7 @@ class VerifyCode extends Component {
           codeBorderColor={codeBorderColor}
           codeFontSize={codeFontSize}
           codeFontColor={codeFontColor}
+          secureTextEntry={secureTextEntry}
           gapWidth={gapWidth}
         />
       </TouchableOpacity>

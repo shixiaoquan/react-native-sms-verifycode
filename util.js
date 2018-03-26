@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 17:51:08
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-26 14:48:51
+* @Last Modified time: 2018-03-26 15:32:26
 */
 
 import {Dimensions} from 'react-native'
@@ -22,6 +22,7 @@ export const Constant = {
   codeBorderWidth: 1.5,
   codeBorderRadius: 5,
   codeFontSize: 16,
+  secureTextEntry: false,
 }
 
 export function getCodeArray(codeArray, verifyCodeLength) {
