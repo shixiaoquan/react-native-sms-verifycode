@@ -4,7 +4,7 @@
 
 |![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|![Password](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-password.gif)|
 |:-:|:-:|:-:|
-|on Android|on iOS|Password|
+| on Android | on iOS | use Password |
 
 ## Installation
 
