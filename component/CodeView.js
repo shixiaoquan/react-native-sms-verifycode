@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 21:57:51
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-22 11:49:36
+* @Last Modified time: 2018-03-26 15:26:02
 */
 
 import React from 'react'
@@ -16,7 +16,8 @@ import {
 const CodeView = (props) => {
   const {
     codeArray = [],
-    verifyCodeLength,
+    coverBGColorList = [],
+    // verifyCodeLength,
     containerPaddingVertical,
     containerPaddingHorizontal,
     containerBackgroundColor,
@@ -31,13 +32,14 @@ const CodeView = (props) => {
   } = props
 
   // console.log('gapWidth:', gapWidth)
+  // console.log('coverBGColorList:', coverBGColorList)
 
   const codeArrayLength = codeArray.length
-  for (let i = 0; i < verifyCodeLength; i++) {
-    if (i >= codeArrayLength) {
-      codeArray[i] = ''
-    }
-  }
+  // for (let i = 0; i < verifyCodeLength; i++) {
+  //   if (i >= codeArrayLength) {
+  //     codeArray[i] = ''
+  //   }
+  // }
 
   // const gapWidth = (getScreenWidth() - containerPaddingHorizontal - verifyCodeLength * codeViewWidth) / (verifyCodeLength - 1)
   return (
@@ -53,6 +55,7 @@ const CodeView = (props) => {
         codeArray.map((code, index) => {
           const borderColor = codeArrayLength === index ? codeFocusedBorderColor : codeBorderColor
           const marginLeft = index === 0 ? 0 : gapWidth
+          // const coverBGColor =  code === '' ? 'transparent' : '#000'
           return (
             <View
               key={index}
@@ -78,6 +81,17 @@ const CodeView = (props) => {
               ]}>
                 {code}
               </Text>
+              {
+                true && <View style={[
+                  styles.cover,
+                  {
+                    width: codeFontSize,
+                    height: codeFontSize,
+                    borderRadius: codeFontSize / 2,
+                    backgroundColor: coverBGColorList[index],
+                  }
+                ]} />
+              }
             </View>
           )
         })
@@ -113,7 +127,10 @@ const styles = StyleSheet.create({
   },
   codeText: {
     backgroundColor: 'transparent'
-  }
+  },
+  cover: {
+    position: 'absolute',
+  },
 })
 
 export default CodeView

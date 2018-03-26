@@ -2,17 +2,29 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-22 20:25:39
+* @Last Modified time: 2018-03-26 15:27:52
 */
 
 'use strict'
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Alert, Keyboard, TextInput, TouchableOpacity} from 'react-native'
+import {
+  Alert,
+  Keyboard,
+  TextInput,
+  TouchableOpacity
+} from 'react-native'
 
 import CodeView from './component/CodeView'
 import styles from './styles'
-import {Colors, Constant, getScreenWidth} from './util.js'
+import {
+  Colors,
+  Constant,
+  getScreenWidth,
+  getCodeArray,
+  getCoverBGColorList,
+  getBeforeCoverBGColorList,
+} from './util.js'
 
 class VerifyCode extends Component {
   static propTypes = {
@@ -32,10 +44,16 @@ class VerifyCode extends Component {
 
   constructor(props) {
     super(props)
+    // console.log('props:', props)
+    const {verifyCodeLength = Constant.verifyCodeLength} = props
+    const codeArray = getCodeArray([], verifyCodeLength)
     this.state = {
       text: '',
-      codeArray: [],
+      codeArray,
+      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
     }
+    // 当前输入的code个数
+    this.curCodeLength = 0
   }
 
   componentDidMount() {
@@ -63,7 +81,14 @@ class VerifyCode extends Component {
   }
 
   reset = () => {
-    this.setState({text: '', codeArray: []})
+    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
+    const codeArray = getCodeArray([], verifyCodeLength)
+    this.curCodeLength = 0
+    this.setState({
+      text: '',
+      codeArray,
+      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
+    })
   }
 
   render() {
@@ -110,6 +135,7 @@ class VerifyCode extends Component {
         />
         <CodeView
           codeArray={this.state.codeArray}
+          coverBGColorList={this.state.coverBGColorList}
           verifyCodeLength={verifyCodeLength}
           containerPaddingVertical={containerPaddingVertical}
           containerPaddingHorizontal={containerPaddingHorizontal}
@@ -128,39 +154,68 @@ class VerifyCode extends Component {
   }
 
   _onChangeText = (text) => {
+    clearTimeout(this.timeout)
+    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
     // console.log('text:', text)
     const codeLength = text.length
     if (codeLength === 0) {
+      const codeArray = getCodeArray([], verifyCodeLength)
+      this.curCodeLength = 0
       this.setState({
         text: '',
-        codeArray: [],
+        codeArray,
+        coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
       })
     } else {
       let codeArray = []
       codeArray = text.split('')
-      if (isNaN(codeArray[codeLength - 1])) {
-        console.log('1 codeArray:', codeArray)
-        codeArray = codeArray.filter(code => !isNaN(code))
-        console.log('2 codeArray:', codeArray)
-        const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`
-        const codeText = codeArray.length > 0 ? codeArray.reduce(reducer) : ``
-        this.showAlert(codeText, codeArray)
-      } else {
-        const _verifyCodeLength = this.props.verifyCodeLength ? this.props.verifyCodeLength : Constant.verifyCodeLength
-        console.log('_verifyCodeLength:', _verifyCodeLength)
-        if (codeLength === _verifyCodeLength) {
-          this.props.onInputCompleted && this.props.onInputCompleted(text)
+      // add
+      if (codeLength > this.curCodeLength) {
+        if (isNaN(codeArray[codeLength - 1])) {
+          // console.log('1 codeArray:', codeArray)
+          codeArray = codeArray.filter(code => !isNaN(code))
+          // console.log('2 codeArray:', codeArray)
+          const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`
+          const codeText = codeArray.length > 0 ? codeArray.reduce(reducer) : ``
+          this.showAlert(codeText, codeArray, codeLength)
+        } else {
+          if (codeLength === verifyCodeLength) {
+            this.props.onInputCompleted && this.props.onInputCompleted(text)
+          }
+          codeArray = getCodeArray(codeArray, verifyCodeLength)
+          this.curCodeLength = codeLength
+          this.setState(
+            {
+              text,
+              codeArray,
+              coverBGColorList: getBeforeCoverBGColorList(codeArray, verifyCodeLength),
+            },
+            () => {
+              this.timeout = setTimeout(
+                () => this.setState({
+                  codeArray,
+                  coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength)
+                }),
+                500
+              )
+            }
+          )
         }
-        console.log('3 codeArray:', codeArray)
+      } else { // minus
+        codeArray = getCodeArray(codeArray, verifyCodeLength)
+        this.curCodeLength = codeLength
         this.setState({
           text,
-          codeArray
+          codeArray,
+          coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
         })
       }
     }
   }
 
-  showAlert = (text, codeArray) => {
+  showAlert = (text, codeArray, codeLength) => {
+    this.curCodeLength = codeLength - 1
+    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
     Alert.alert(
       '',
       '验证码只能输入数字',
@@ -168,9 +223,11 @@ class VerifyCode extends Component {
         {
           text: '确定',
           onPress: () => {
+            codeArray = getCodeArray(codeArray, verifyCodeLength)
             this.setState({
               text,
-              codeArray
+              codeArray,
+              coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
             })
           }
         },
