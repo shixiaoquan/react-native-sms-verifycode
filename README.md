@@ -1,10 +1,10 @@
 ## Screen Capture
 
-### 支持 ios、android
+### 支持输入密码，兼容了 iOS 和 Android
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|
-|:-:|:-:|
-|on Android|on iOS|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|![Password](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-password.gif)|
+|:-:|:-:|:-:|
+|on Android|on iOS|Password|
 
 ## Installation
 
@@ -132,6 +132,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | codeBorderRadius | number | 5 | NO | 文本框的圆角大小 |
 | codeFontSize | number | default | NO | 文本的大小 |
 | codeFontColor | string | #222222 | NO | 文本的颜色 |
+| secureTextEntry | boolean | false | NO | 默认为false，需要设置为true时，只要secureTextEntry即可，不需要secureTextEntry={true} |
 
 ## **APIs**
 
