@@ -2,7 +2,7 @@
 * @Author: edmond
 * @Date:   2018-03-20 17:51:08
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-26 15:32:26
+* @Last Modified time: 2018-03-26 16:36:38
 */
 
 import {Dimensions} from 'react-native'
@@ -32,7 +32,7 @@ export function getCodeArray(codeArray, verifyCodeLength) {
       codeArray[i] = ''
     }
   }
-  console.log('codeArray:', codeArray)
+  // console.log('codeArray:', codeArray)
   return codeArray
 }
 
@@ -45,7 +45,7 @@ export function getCoverBGColorList(codeArray, verifyCodeLength) {
       coverBGColorList.push('black')
     }
   }
-  console.log('coverBGColorList:', coverBGColorList)
+  // console.log('coverBGColorList:', coverBGColorList)
   return coverBGColorList
 }
 
@@ -59,6 +59,6 @@ export function getBeforeCoverBGColorList(codeArray, verifyCodeLength) {
       coverBGColorList.push('black')
     }
   }
-  console.log('coverBGColorList:', coverBGColorList)
+  // console.log('coverBGColorList:', coverBGColorList)
   return coverBGColorList
 }
