@@ -6,6 +6,8 @@
 |:-:|:-:|:-:|
 | on Android | on iOS | use Password |
 
+在线Demo查看地址 [Expo](https://snack.expo.io/@shixiaoquan/-react-native-sms-verifycode-example)
+
 ## Installation
 
 ```bash
