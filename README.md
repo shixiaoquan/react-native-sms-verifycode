@@ -2,7 +2,7 @@
 
 ### 支持输入密码，兼容了 iOS 和 Android
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-ios.gif)|![Password](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/react-native-sms-verifycode-password.gif)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-ios.gif)|![Password](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-password.gif)|
 |:-:|:-:|:-:|
 | on Android | on iOS | use Password |
 
@@ -47,7 +47,7 @@ reset = () => {
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-android.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-ios.png)|![all](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/normal-all.gif)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-android.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-ios.png)|![all](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-all.gif)|
 |:-:|:-:|:-:|
 
 ### Advanced Usage
@@ -62,7 +62,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 />
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-number-4.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-number-5.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-number-6.png)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-number-4.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-number-5.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-number-6.png)|
 |:-:|:-:|:-:|
 
 #### 设置Container样式
@@ -79,7 +79,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-3.png)|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-container-2.png)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-container-3.png)|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-container-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-container-2.png)|
 |:-:|:-:|:-:|
 
 #### 设置文本框的样式
@@ -100,7 +100,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-3.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-border-2.png)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-border-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-border-3.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-border-2.png)|
 |:-:|:-:|:-:|
 
 #### 设置文本的样式
@@ -116,7 +116,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 ...        
 ```
 
-|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-2.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/screencaptures/change-textstyle-3.png)|
+|![android](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-1.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-2.png)|![iOS](https://github.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-3.png)|
 |:-:|:-:|:-:|
 
 ## **Properties**
