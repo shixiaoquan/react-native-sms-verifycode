@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-03-26 15:37:58
+* @Last Modified time: 2018-04-20 17:01:21
 */
 
 'use strict'
@@ -81,17 +81,6 @@ class VerifyCode extends Component {
     this.keyboardShow = false
   }
 
-  reset = () => {
-    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
-    const codeArray = getCodeArray([], verifyCodeLength)
-    this.curCodeLength = 0
-    this.setState({
-      text: '',
-      codeArray,
-      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-    })
-  }
-
   render() {
     // console.log('getScreenWidth:', getScreenWidth())
     const {verifyCodeLength = Constant.verifyCodeLength} = this.props
@@ -116,9 +105,9 @@ class VerifyCode extends Component {
         style={styles.container}
         activeOpacity={1}
         onPressIn={() => {
-          !this.keyboardShow && this.textInput.blur()
+          !this.keyboardShow && this.blur()
         }}
-        onPressOut={() => this.textInput.focus()}
+        onPressOut={() => this.focus()}
       >
         <TextInput
           ref={ref => (this.textInput = ref)}
@@ -156,6 +145,25 @@ class VerifyCode extends Component {
     )
   }
 
+  reset = () => {
+    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
+    const codeArray = getCodeArray([], verifyCodeLength)
+    this.curCodeLength = 0
+    this.setState({
+      text: '',
+      codeArray,
+      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
+    })
+    this.blur()
+  }
+
+  blur = () => {
+    this.textInput.focus()
+    this.textInput.blur()
+  }
+
+  focus = () => this.textInput.focus()
+
   _onChangeText = (text) => {
     clearTimeout(this.timeout)
     const {verifyCodeLength = Constant.verifyCodeLength} = this.props
@@ -174,6 +182,7 @@ class VerifyCode extends Component {
       codeArray = text.split('')
       // add
       if (codeLength > this.curCodeLength) {
+        console.log(codeArray[codeLength - 1])
         if (isNaN(codeArray[codeLength - 1])) {
           // console.log('1 codeArray:', codeArray)
           codeArray = codeArray.filter(code => !isNaN(code))
@@ -234,7 +243,8 @@ class VerifyCode extends Component {
             })
           }
         },
-      ]
+      ],
+      { cancelable: false }
     )
   }
 }
