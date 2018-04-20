@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
 * @Last Modified by:   edmond
-* @Last Modified time: 2018-04-20 17:01:21
+* @Last Modified time: 2018-04-20 17:20:36
 */
 
 'use strict'
@@ -154,7 +154,6 @@ class VerifyCode extends Component {
       codeArray,
       coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
     })
-    this.blur()
   }
 
   blur = () => {
