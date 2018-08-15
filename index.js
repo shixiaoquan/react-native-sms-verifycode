@@ -5,247 +5,354 @@
 * @Last Modified time: 2018-04-20 17:20:36
 */
 
-'use strict'
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Alert,
   Keyboard,
   TextInput,
-  TouchableOpacity
-} from 'react-native'
+  TouchableOpacity,
+} from 'react-native';
 
-import CodeView from './component/CodeView'
-import styles from './styles'
+import CodeView from './component/CodeView';
+import styles from './styles';
 import {
   Colors,
   Constant,
   getScreenWidth,
   getCodeArray,
-  getCoverBGColorList,
-  getBeforeCoverBGColorList,
-} from './util.js'
+  Constants,
+} from './util';
+
 
 class VerifyCode extends Component {
-  static propTypes = {
-    verifyCodeLength: PropTypes.number,
-    containerPaddingVertical: PropTypes.number,
-    containerPaddingHorizontal: PropTypes.number,
-    containerBackgroundColor: PropTypes.string,
-    codeViewWidth: PropTypes.number,
-    codeBorderWidth: PropTypes.number,
-    codeBorderRadius: PropTypes.number,
-    codeFocusedBorderColor: PropTypes.string,
-    codeBorderColor: PropTypes.string,
-    codeFontSize: PropTypes.number,
-    codeFontColor: PropTypes.string,
-    onInputCompleted: PropTypes.func,
-    secureTextEntry: PropTypes.bool,
-  }
-
   constructor(props) {
-    super(props)
-    // console.log('props:', props)
-    const {verifyCodeLength = Constant.verifyCodeLength} = props
-    const codeArray = getCodeArray([], verifyCodeLength)
+    super(props);
+    const { verifyCodeLength } = props;
+    const codeArray = getCodeArray([], verifyCodeLength);
     this.state = {
       text: '',
       codeArray,
-      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-    }
+      coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+    };
     // 当前输入的code个数
-    this.curCodeLength = 0
+    this.curCodeLength = 0;
   }
 
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
-      this._keyboardDidShow.bind(this)
-    )
+      this.keyboardDidShow.bind(this),
+    );
     this.keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
-      this._keyboardDidHide.bind(this)
-    )
+      this.keyboardDidHide.bind(this),
+    );
   }
 
   componentWillUnmount() {
-    this.keyboardDidShowListener.remove()
-    this.keyboardDidHideListener.remove()
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
   }
 
-  _keyboardDidShow() {
-    this.keyboardShow = true
+  onChangeText = (text) => {
+    clearTimeout(this.timeout);
+    const { verifyCodeLength = Constant.verifyCodeLength } = this.props;
+    // console.log('text:', text)
+    const codeLength = text.length;
+    if (codeLength === 0) {
+      const codeArray = getCodeArray([], verifyCodeLength);
+      this.curCodeLength = 0;
+      this.setState({
+        text: '',
+        codeArray,
+        coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+      });
+    } else {
+      let codeArray = [];
+      codeArray = text.split('');
+      // add
+      if (codeLength > this.curCodeLength) {
+        if (isNaN(codeArray[codeLength - 1]) || codeArray[codeLength - 1] === ' ') {
+          // console.log('1 codeArray:', codeArray)
+          codeArray = codeArray.filter(code => !isNaN(code) && code !== ' ');
+          // console.log('2 codeArray:', codeArray)
+          const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
+          const codeText = codeArray.length > 0 ? codeArray.reduce(reducer) : '';
+          this.showAlert(codeText, codeArray, codeLength);
+        } else {
+          if (codeLength === verifyCodeLength) {
+            if (this.props.onInputCompleted) { this.props.onInputCompleted(text); }
+          }
+          codeArray = getCodeArray(codeArray, verifyCodeLength);
+          this.curCodeLength = codeLength;
+          this.setState(
+            {
+              text,
+              codeArray,
+              coverBGColorList: this.getBeforeCoverBGColorList(codeArray, verifyCodeLength),
+            },
+            () => {
+              this.timeout = setTimeout(
+                () => this.setState({
+                  codeArray,
+                  coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+                }),
+                500,
+              );
+            },
+          );
+        }
+      } else { // minus
+        codeArray = getCodeArray(codeArray, verifyCodeLength);
+        this.curCodeLength = codeLength;
+        this.setState({
+          text,
+          codeArray,
+          coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+        });
+      }
+    }
   }
 
-  _keyboardDidHide() {
-    this.keyboardShow = false
+  getBeforeCoverBGColorList = (codeArray, verifyCodeLength) => {
+    const coverBGColorList = [];
+    const count = codeArray.filter(code => code !== '').length;
+    for (let i = 0; i < verifyCodeLength; i++) {
+      if (codeArray[i] === '' || i === count - 1) {
+        coverBGColorList.push('transparent');
+      } else {
+        const { coverColor: color } = this.props;
+        coverBGColorList.push(color);
+      }
+    }
+    return coverBGColorList;
   }
+
+  getCoverBGColorList = (codeArray, verifyCodeLength) => {
+    const coverBGColorList = [];
+    for (let i = 0; i < verifyCodeLength; i++) {
+      if (codeArray[i] === '') {
+        coverBGColorList.push('transparent');
+      } else {
+        const { coverColor: color } = this.props;
+        coverBGColorList.push(color);
+      }
+    }
+    return coverBGColorList;
+  }
+
+  keyboardDidShow() {
+    this.keyboardShow = true;
+  }
+
+  keyboardDidHide() {
+    this.keyboardShow = false;
+  }
+
+  reset = () => {
+    const { verifyCodeLength = Constant.verifyCodeLength } = this.props;
+    const codeArray = getCodeArray([], verifyCodeLength);
+    this.curCodeLength = 0;
+    this.setState({
+      text: '',
+      codeArray,
+      coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+    });
+  }
+
+  blur = () => {
+    this.textInput.focus();
+    this.textInput.blur();
+  }
+
+  focus = () => this.textInput.focus()
+
+  showAlert = (text, codeArray, codeLength) => {
+    this.curCodeLength = codeLength - 1;
+    const {
+      verifyCodeLength,
+      warningTitle,
+      warningContent,
+      warningButtonText,
+    } = this.props;
+    Alert.alert(
+      warningTitle,
+      warningContent,
+      [
+        {
+          text: warningButtonText,
+          onPress: () => {
+            codeArray = getCodeArray(codeArray, verifyCodeLength);
+            this.setState({
+              text,
+              codeArray,
+              coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+            });
+          },
+        },
+      ],
+      { cancelable: false },
+    );
+  }
+
+  bindRef = (ref) => { this.textInput = ref; };
 
   render() {
-    // console.log('getScreenWidth:', getScreenWidth())
-    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
-    let gapWidth = getScreenWidth() / (3 * verifyCodeLength + 1)
-    const {containerPaddingHorizontal = gapWidth} = this.props
-    gapWidth = (getScreenWidth() - 2 * containerPaddingHorizontal) / (verifyCodeLength * 3 - 1)
-    const {codeBorderWidth = Constant.codeBorderWidth} = this.props
-    const {codeViewWidth = 2 * gapWidth} = this.props
+    let gapWidth = 0;
+    let newCodeViewWidth = 0;
+    const { codeViewWidth } = this.props;
+    const { verifyCodeLength } = this.props;
+    const { containerPaddingHorizontal } = this.props;
+    if (codeViewWidth) {
+      if (containerPaddingHorizontal) {
+        gapWidth = (getScreenWidth() - (2 * containerPaddingHorizontal)) / ((3 * verifyCodeLength) + 1);
+      } else {
+        gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
+      }
+      newCodeViewWidth = codeViewWidth;
+    } else {
+      if (containerPaddingHorizontal) {
+        gapWidth = (getScreenWidth() - (2 * containerPaddingHorizontal)) / ((3 * verifyCodeLength) + 1);
+      } else {
+        gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
+      }
+      newCodeViewWidth = 2 * gapWidth;
+    }
     const {
+      containerStyle,
       containerPaddingVertical = 0,
       containerBackgroundColor = Colors.containerBackgroundColor,
-      codeFocusedBorderColor = Colors.codeFocusedBorderColor,
-      codeBorderColor = Colors.codeBorderColor,
-      codeBorderRadius = Constant.codeBorderRadius,
-      codeFontSize = Constant.codeFontSize,
-      codeFontColor = Colors.codeFontColor,
-      secureTextEntry = Constant.secureTextEntry,
-    } = this.props
+
+      codeViewStyle,
+      codeViewBackgroundColor,
+      codeViewBorderWidth,
+      codeViewBorderColor,
+      codeViewBorderRadius,
+      focusedCodeViewBorderColor,
+
+      codeStyle,
+      codeFontSize,
+      codeColor,
+      secureTextEntry,
+    } = this.props;
 
     return (
       <TouchableOpacity
         style={styles.container}
         activeOpacity={1}
         onPressIn={() => {
-          !this.keyboardShow && this.blur()
+          if (!this.keyboardShow) { this.blur(); }
         }}
         onPressOut={() => this.focus()}
       >
         <TextInput
-          ref={ref => (this.textInput = ref)}
-          underlineColorAndroid={'transparent'}
+          ref={this.bindRef}
+          underlineColorAndroid="transparent"
           caretHidden
           autoFocus
           maxLength={verifyCodeLength}
-          keyboardType={'numeric'}
+          keyboardType="numeric"
           style={styles.hiddenTextInput}
           value={this.state.text}
           onChangeText={(text) => {
-            this.setState({text: text})
-            this._onChangeText(text)
+            this.setState({ text });
+            this.onChangeText(text);
             // onInputCompleted(text)
           }}
         />
         <CodeView
+          gapWidth={gapWidth}
           codeArray={this.state.codeArray}
           coverBGColorList={this.state.coverBGColorList}
           verifyCodeLength={verifyCodeLength}
+
+          containerStyle={containerStyle}
           containerPaddingVertical={containerPaddingVertical}
           containerPaddingHorizontal={containerPaddingHorizontal}
           containerBackgroundColor={containerBackgroundColor}
-          codeViewWidth={codeViewWidth}
-          codeBorderWidth={codeBorderWidth}
-          codeBorderRadius={codeBorderRadius}
-          codeFocusedBorderColor={codeFocusedBorderColor}
-          codeBorderColor={codeBorderColor}
+
+          codeViewStyle={codeViewStyle}
+          codeViewBorderColor={codeViewBorderColor}
+          focusedCodeViewBorderColor={focusedCodeViewBorderColor}
+          codeViewWidth={newCodeViewWidth}
+          codeViewBorderWidth={codeViewBorderWidth}
+          codeViewBorderRadius={codeViewBorderRadius}
+          codeViewBackgroundColor={codeViewBackgroundColor}
+
+          codeStyle={codeStyle}
           codeFontSize={codeFontSize}
-          codeFontColor={codeFontColor}
+          codeFontColor={codeColor}
           secureTextEntry={secureTextEntry}
-          gapWidth={gapWidth}
         />
       </TouchableOpacity>
-    )
-  }
-
-  reset = () => {
-    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
-    const codeArray = getCodeArray([], verifyCodeLength)
-    this.curCodeLength = 0
-    this.setState({
-      text: '',
-      codeArray,
-      coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-    })
-  }
-
-  blur = () => {
-    this.textInput.focus()
-    this.textInput.blur()
-  }
-
-  focus = () => this.textInput.focus()
-
-  _onChangeText = (text) => {
-    clearTimeout(this.timeout)
-    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
-    // console.log('text:', text)
-    const codeLength = text.length
-    if (codeLength === 0) {
-      const codeArray = getCodeArray([], verifyCodeLength)
-      this.curCodeLength = 0
-      this.setState({
-        text: '',
-        codeArray,
-        coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-      })
-    } else {
-      let codeArray = []
-      codeArray = text.split('')
-      // add
-      if (codeLength > this.curCodeLength) {
-        console.log(codeArray[codeLength - 1])
-        if (isNaN(codeArray[codeLength - 1])) {
-          // console.log('1 codeArray:', codeArray)
-          codeArray = codeArray.filter(code => !isNaN(code))
-          // console.log('2 codeArray:', codeArray)
-          const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`
-          const codeText = codeArray.length > 0 ? codeArray.reduce(reducer) : ``
-          this.showAlert(codeText, codeArray, codeLength)
-        } else {
-          if (codeLength === verifyCodeLength) {
-            this.props.onInputCompleted && this.props.onInputCompleted(text)
-          }
-          codeArray = getCodeArray(codeArray, verifyCodeLength)
-          this.curCodeLength = codeLength
-          this.setState(
-            {
-              text,
-              codeArray,
-              coverBGColorList: getBeforeCoverBGColorList(codeArray, verifyCodeLength),
-            },
-            () => {
-              this.timeout = setTimeout(
-                () => this.setState({
-                  codeArray,
-                  coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength)
-                }),
-                500
-              )
-            }
-          )
-        }
-      } else { // minus
-        codeArray = getCodeArray(codeArray, verifyCodeLength)
-        this.curCodeLength = codeLength
-        this.setState({
-          text,
-          codeArray,
-          coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-        })
-      }
-    }
-  }
-
-  showAlert = (text, codeArray, codeLength) => {
-    this.curCodeLength = codeLength - 1
-    const {verifyCodeLength = Constant.verifyCodeLength} = this.props
-    Alert.alert(
-      '',
-      '验证码只能输入数字',
-      [
-        {
-          text: '确定',
-          onPress: () => {
-            codeArray = getCodeArray(codeArray, verifyCodeLength)
-            this.setState({
-              text,
-              codeArray,
-              coverBGColorList: getCoverBGColorList(codeArray, verifyCodeLength),
-            })
-          }
-        },
-      ],
-      { cancelable: false }
-    )
+    );
   }
 }
 
-export default VerifyCode
+VerifyCode.propTypes = {
+  verifyCodeLength: PropTypes.number,
+
+  containerStyle: PropTypes.oneOfType([PropTypes.object]),
+  containerPaddingVertical: PropTypes.number,
+  containerPaddingHorizontal: PropTypes.number,
+  containerBackgroundColor: PropTypes.string,
+
+  codeViewStyle: PropTypes.oneOfType([PropTypes.object]),
+  codeViewBorderColor: PropTypes.number,
+  focusedCodeViewBorderColor: PropTypes.string,
+  codeViewWidth: PropTypes.number,
+  codeViewBorderWidth: PropTypes.number,
+  codeViewBorderRadius: PropTypes.number,
+  codeViewBackgroundColor: PropTypes.string,
+
+  codeStyle: PropTypes.oneOfType([PropTypes.object]),
+  codeFontSize: PropTypes.number,
+  codeColor: PropTypes.string,
+
+  secureTextEntry: PropTypes.bool,
+  coverStyle: PropTypes.oneOfType([PropTypes.object]),
+  coverRadius: PropTypes.number,
+  coverColor: PropTypes.string,
+
+  onInputCompleted: PropTypes.func,
+
+  warningTitle: PropTypes.string,
+  warningContent: PropTypes.string,
+  warningButtonText: PropTypes.string,
+};
+
+VerifyCode.defaultProps = {
+  verifyCodeLength: Constants.verifyCodeLength,
+
+  containerStyle: null,
+  containerPaddingVertical: null,
+  containerPaddingHorizontal: null,
+  containerBackgroundColor: null,
+
+  codeViewStyle: null,
+  codeViewBorderColor: null,
+  focusedCodeViewBorderColor: Colors.focusedCodeViewBorderColor,
+  codeViewWidth: null,
+  codeViewBorderWidth: null,
+  codeViewBorderRadius: null,
+  codeViewBackgroundColor: null,
+
+  codeStyle: null,
+  codeFontSize: Constants.codeFontSize,
+  codeColor: Constants.codeColor,
+
+  secureTextEntry: false,
+  coverStyle: null,
+  coverRadius: null,
+  coverColor: Colors.coverColor,
+
+  onInputCompleted: null,
+
+  warningTitle: Constants.warningTitle,
+  warningContent: Constants.warningContent,
+  warningButtonText: Constants.warningButtonText,
+};
+
+export default VerifyCode;

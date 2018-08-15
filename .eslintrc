@@ -1,0 +1,101 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": "airbnb",
+  "env": {
+    "es6": true
+  },
+  "plugins": [
+    "react",
+    "react-native",
+    "jsx-a11y",
+    "import"
+  ],
+  "globals": {
+    "__DEV__": true,
+    "__dirname": false,
+    "__fbBatchedBridgeConfig": false,
+    "alert": false,
+    "cancelAnimationFrame": false,
+    "cancelIdleCallback": false,
+    "clearImmediate": true,
+    "clearInterval": false,
+    "clearTimeout": false,
+    "console": false,
+    "document": false,
+    "escape": false,
+    "Event": false,
+    "EventTarget": false,
+    "exports": false,
+    "fetch": false,
+    "FormData": false,
+    "global": false,
+    "jest": false,
+    "Map": true,
+    "module": false,
+    "navigator": false,
+    "process": false,
+    "Promise": true,
+    "requestAnimationFrame": true,
+    "requestIdleCallback": true,
+    "require": false,
+    "Set": true,
+    "setImmediate": true,
+    "setInterval": false,
+    "setTimeout": false,
+    "window": false,
+    "XMLHttpRequest": false,
+    "pit": false
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "react/no-unused-prop-types": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/prefer-stateless-function": [
+      1,
+      {
+        "ignorePureComponents": true
+      }
+    ],
+    "no-bitwise": "off",
+    "no-param-reassign": "off",
+    "max-len": [
+      0,
+      160,
+      4
+    ],
+    "arrow-parens": [
+      2,
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ],
+    "guard-for-in": "off",
+    "no-restricted-syntax": [
+      "error",
+      "BinaryExpression[operator='in']"
+    ]
+  }
+}
