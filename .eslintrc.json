@@ -17,7 +17,7 @@
   ],
   "rules": {
     "no-debugger": ["off"],
-    "no-eval": 1,//禁止使用eval
+    "no-eval": 1,
     "comma-dangle": ["off"],
     "camelcase": ["off"],
     "valid-typeof": ["off"],

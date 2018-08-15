@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/shixiaoquan/react-native-sms-verifycode#readme",
   "dependencies": {
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
