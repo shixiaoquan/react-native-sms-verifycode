@@ -1,4 +1,4 @@
-## Screen Capture
+## 效果图
 
 ### 支持输入密码，兼容了 iOS 和 Android
 
@@ -8,15 +8,15 @@
 
 在线Demo查看地址 [Expo](https://snack.expo.io/@shixiaoquan/-react-native-sms-verifycode-example)
 
-## Installation
+## 安装
 
 ```bash
 $ npm install react-native-sms-verifycode --save
 ```
 
-## Usage
+## 用法
 
-### Basic Usage
+### 基本用法
 
 设置输入完成时的回调函数，即可获取用户输入的内容
 
@@ -50,7 +50,7 @@ reset = () => {
 |![android](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-android.png)|![iOS](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-ios.png)|![all](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/normal-all.gif)|
 |:-:|:-:|:-:|
 
-### Advanced Usage
+### 高级用法
 
 #### 设置验证码的个数
 
@@ -119,30 +119,30 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 |![android](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-1.png)|![iOS](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-2.png)|![iOS](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/change-textstyle-3.png)|
 |:-:|:-:|:-:|
 
-## **Properties**
+## **可设置的属性**
 
 | Prop | PropType | Default Value |isRequired| Description |
 |:-:|:-:|:-:|:-:|:-:|
 | verifyCodeLength | number | 6 | NO | 验证码的个数 |
-| containerStyle | object | null | NO | set container style |
+| containerStyle | object | null | NO | 设置container的样式，改属性设置的级别低于后面3个，如果重复会被覆盖，该样式和 View 支持的样式一样 |
 | containerPaddingVertical | number | 0 | NO | 外层容器的paddingVertical |
 | containerPaddingHorizontal | number | 根据验证码个数自动计算 | NO | 外层容器的paddingHorizontal |
 | containerBackgroundColor | string | #FDFFFD | NO | 外层容器的backgroundColor |
-| codeViewStyle | object | null | NO | set code view style |
+| codeViewStyle | object | null | NO | 设置数字框的样式，(等同于 View 的样式设置，本质上是个 View) |
 | codeViewWidth | number | 根据验证码个数自动计算 | NO | 文本框的宽度 |
 | codeViewBorderColor | string | grey | NO | 文本框的颜色 |
 | focusedCodeViewBorderColor | string | #1192F6 | NO | 当前获得焦点的文本框的颜色 |
 | codeViewBorderWidth | number | 1 | NO | 文本框的粗细 |
 | codeViewBorderRadius | number | 5 | NO | 文本框的圆角大小 |
-| codeViewBackgroundColor | string | default | NO | code view background color |
+| codeViewBackgroundColor | string | default | NO | 设置数字框的背景色 |
 | codeFontSize | number | default | NO | 文本的大小 |
 | codeColor | string | #222222 | NO | 文本的颜色 |
 | secureTextEntry | boolean | false | NO | 默认为false，需要设置为true时，只要secureTextEntry即可，不需要secureTextEntry={true} |
-| coverStyle | object | null | NO | cover style |
-| coverRadius | number | codeFontSize / 2 | NO | cover radius |
-| coverColor | string | black | NO | cover color |
+| coverStyle | object | null | NO | 遮挡层的样式，(等同于 View 的样式设置，本质上是个 View) |
+| coverRadius | number | codeFontSize / 2 | NO | 遮挡层的半径，默认是个圆点（只在 secureTextEntry 为 true 时生效） |
+| coverColor | string | black | NO | 遮挡层的颜色，（只在 secureTextEntry 为 true 时生效） |
 
-## **APIs**
+## **可调用的方法**
 
 | Name | isRequired | Description |
 |:-:|:-:|:-:|

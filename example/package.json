@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "react-native run-android",
+    "refresh": "cd ../ && npm pack && cd example/ && npm install /Users/edmond/ReactNativeProjects/react-native-sms-verifycode/react-native-sms-verifycode-1.1.6.tgz",
     "test": "jest"
   },
   "dependencies": {

@@ -12,10 +12,11 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { Colors, Constants } from '../util';
+import { Colors, Constants, getScreenWidth } from '../util';
 
 const styles = StyleSheet.create({
   defaultContainerStyle: {
+    width: getScreenWidth(),
     flexDirection: 'row',
     backgroundColor: 'white',
   },
@@ -42,7 +43,8 @@ const styles = StyleSheet.create({
 
 const CodeView = (props) => {
   const {
-    codeArray = [],
+    verifyCodeLength,
+    codeArray,
     coverBGColorList,
     gapWidth,
 
@@ -87,7 +89,8 @@ const CodeView = (props) => {
     >
       {
         codeArray.map((code, index) => {
-          const marginLeft = index === 0 ? 0 : gapWidth;
+          const marginLeft = gapWidth;
+          const marginRight = index === verifyCodeLength - 1 ? gapWidth : 0;
 
           // code view style
           const viewWidth = codeViewWidth ? { width: codeViewWidth } : {};
@@ -118,6 +121,7 @@ const CodeView = (props) => {
                       ...viewWidth,
                       ...viewHight,
                       marginLeft,
+                      marginRight,
                       ...viewBackgroundColor,
                       ...viewBorderWidth,
                       ...viewBorderRadius,
@@ -165,6 +169,7 @@ CodeView.propTypes = {
   ])),
   coverBGColorList: PropTypes.arrayOf(PropTypes.string).isRequired,
   gapWidth: PropTypes.number,
+  verifyCodeLength: PropTypes.number,
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
   containerPaddingVertical: PropTypes.number,
@@ -172,7 +177,7 @@ CodeView.propTypes = {
   containerBackgroundColor: PropTypes.string,
 
   codeViewStyle: PropTypes.oneOfType([PropTypes.object]),
-  codeViewBorderColor: PropTypes.number,
+  codeViewBorderColor: PropTypes.string,
   focusedCodeViewBorderColor: PropTypes.string,
   codeViewWidth: PropTypes.number.isRequired,
   codeViewBorderWidth: PropTypes.number,
@@ -190,7 +195,8 @@ CodeView.propTypes = {
 
 CodeView.defaultProps = {
   codeArray: [],
-  gapWidth: PropTypes.number,
+  gapWidth: 0,
+  verifyCodeLength: 0,
 
   containerStyle: null,
   containerPaddingVertical: null,

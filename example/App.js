@@ -67,6 +67,14 @@ class App extends Component {
         <SMSVerifyCode
           ref={this.bindRef}
           onInputCompleted={this.onInputCompleted}
+          containerPaddingVertical={10}
+          containerPaddingHorizontal={50}
+          containerBackgroundColor="#8DC647"
+          codeViewBorderColor="#000000"
+          focusedCodeViewBorderColor="#0000FF"
+          codeViewBorderWidth={3}
+          codeViewBorderRadius={16}
+
           // verifyCodeLength={6}
           // containerPaddingVertical={10}
           // containerPaddingHorizontal={50}

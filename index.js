@@ -300,7 +300,7 @@ VerifyCode.propTypes = {
   containerBackgroundColor: PropTypes.string,
 
   codeViewStyle: PropTypes.oneOfType([PropTypes.object]),
-  codeViewBorderColor: PropTypes.number,
+  codeViewBorderColor: PropTypes.string,
   focusedCodeViewBorderColor: PropTypes.string,
   codeViewWidth: PropTypes.number,
   codeViewBorderWidth: PropTypes.number,

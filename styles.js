@@ -7,30 +7,15 @@
 
 import { StyleSheet } from 'react-native';
 
-import { getScreenWidth, Colors } from './util';
+import { getScreenWidth } from './util';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    // width: getScreenWidth(),
+    width: getScreenWidth(),
   },
   hiddenTextInput: {
     width: 0,
     height: 0,
-    backgroundColor: 'transparent',
-  },
-  codeView: {
-    width: (getScreenWidth() - 140) / 6,
-    height: (getScreenWidth() - 140) / 6,
-    margin: 10,
-    backgroundColor: '#F7F8F7',
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: Colors.mainColor,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  codeText: {
     backgroundColor: 'transparent',
   },
 });
