@@ -67,26 +67,26 @@ class App extends Component {
         <SMSVerifyCode
           ref={this.bindRef}
           onInputCompleted={this.onInputCompleted}
+          // containerPaddingVertical={10}
+          // containerPaddingHorizontal={50}
+          // containerBackgroundColor="#8DC647"
+          // codeViewBorderColor="#000000"
+          // focusedCodeViewBorderColor="#0000FF"
+          // codeViewBorderWidth={3}
+          // codeViewBorderRadius={16}
+
+          verifyCodeLength={6}
           containerPaddingVertical={10}
           containerPaddingHorizontal={50}
           containerBackgroundColor="#8DC647"
-          codeViewBorderColor="#000000"
-          focusedCodeViewBorderColor="#0000FF"
-          codeViewBorderWidth={3}
-          codeViewBorderRadius={16}
-
-          // verifyCodeLength={6}
-          // containerPaddingVertical={10}
-          // containerPaddingHorizontal={50}
-          // containerBackgroundColor={'#8DC647'}
-          // codeBorderColor={'#000000'}
-          // codeFocusedBorderColor={'#0000FF'}
-          // codeBorderWidth={3}
-          // codeBorderRadius={16}
-          // codeFontSize={20}
-          // codeFontColor={'#D784EB'}
-          // secureTextEntry
-          // codeViewStyle={styles.codeBorderStyle}
+          codeBorderColor="#000000"
+          codeFocusedBorderColor="#0000FF"
+          codeBorderWidth={3}
+          codeBorderRadius={16}
+          codeFontSize={20}
+          codeFontColor="#D784EB"
+          secureTextEntry
+          codeViewStyle={styles.codeBorderStyle}
         />
         <TouchableOpacity
           onPress={this.reset}
