@@ -67,8 +67,8 @@ class App extends Component {
         <SMSVerifyCode
           ref={this.bindRef}
           onInputCompleted={this.onInputCompleted}
-          verifyCodeLength={6}
-          containerPaddingVertical={10}
+          // verifyCodeLength={6}
+          // containerPaddingVertical={10}
           // containerPaddingHorizontal={50}
           // containerBackgroundColor={'#8DC647'}
           // codeBorderColor={'#000000'}
@@ -77,8 +77,8 @@ class App extends Component {
           // codeBorderRadius={16}
           // codeFontSize={20}
           // codeFontColor={'#D784EB'}
-          secureTextEntry
-          codeViewStyle={styles.codeBorderStyle}
+          // secureTextEntry
+          // codeViewStyle={styles.codeBorderStyle}
         />
         <TouchableOpacity
           onPress={this.reset}

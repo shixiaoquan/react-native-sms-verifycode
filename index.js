@@ -119,7 +119,7 @@ class VerifyCode extends Component {
   getBeforeCoverBGColorList = (codeArray, verifyCodeLength) => {
     const coverBGColorList = [];
     const count = codeArray.filter(code => code !== '').length;
-    for (let i = 0; i < verifyCodeLength; i++) {
+    for (let i = 0; i < verifyCodeLength; i += 1) {
       if (codeArray[i] === '' || i === count - 1) {
         coverBGColorList.push('transparent');
       } else {
@@ -132,7 +132,7 @@ class VerifyCode extends Component {
 
   getCoverBGColorList = (codeArray, verifyCodeLength) => {
     const coverBGColorList = [];
-    for (let i = 0; i < verifyCodeLength; i++) {
+    for (let i = 0; i < verifyCodeLength; i += 1) {
       if (codeArray[i] === '') {
         coverBGColorList.push('transparent');
       } else {
