@@ -1,3 +1,4 @@
+### [Englsih Version](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/develop/README.md)
 ## 效果图
 
 ### 支持输入密码，兼容了 iOS 和 Android
