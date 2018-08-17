@@ -25,6 +25,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 <SMSVerifyCode
   ref={ref => (this.verifycode = ref)}
   onInputCompleted={this.onInputCompleted}
+  containerPaddingHorizontal={30}
 />
 
 onInputCompleted = (text) => {
@@ -125,7 +126,11 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | verifyCodeLength | number | 6 | NO | length of the verification code |
 | containerStyle | object | null | NO | set container style |
 | containerPaddingVertical | number | 0 | NO | container's paddingVertical |
+| containerPaddingLeft | number | 0 | NO | set container paddingLeft |
+| containerPaddingRight | number | 0 | NO | set container paddingRight |
 | containerPaddingHorizontal | number | Automatic calculation based on the length of the verification code | NO | container's paddingHorizontal |
+| containerPaddingLeft | number | 0 | NO | set container paddingLeft |
+| containerPaddingRight | number | 0 | NO | set container paddingRight |
 | containerBackgroundColor | string | #FDFFFD | NO | container's backgroundColor |
 | codeViewStyle | object | null | NO | set code view style |
 | codeViewWidth | number | Automatic calculation based on the length of the verification code | NO |  width of code view |
@@ -140,6 +145,9 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | coverStyle | object | null | NO | cover style |
 | coverRadius | number | codeFontSize / 2 | NO | cover radius |
 | coverColor | string | black | NO | cover color |
+| warningTitle | string | black | NO | When the input content is not a number, the title of the prompt box |
+| warningContent | string | black | NO | When the input content is not a number, the content of the prompt box |
+| warningButtonText | string | black | NO | When the input content is not a number, the button text of the prompt box |
 
 ## **APIs**
 

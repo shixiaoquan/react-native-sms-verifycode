@@ -30,6 +30,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 <SMSVerifyCode
   ref={ref => (this.verifycode = ref)}
   onInputCompleted={this.onInputCompleted}
+  containerPaddingHorizontal={30}
 />
 
 onInputCompleted = (text) => {
@@ -130,7 +131,11 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | verifyCodeLength | number | 6 | NO | 验证码的个数 |
 | containerStyle | object | null | NO | 设置container的样式，改属性设置的级别低于后面3个，如果重复会被覆盖，该样式和 View 支持的样式一样 |
 | containerPaddingVertical | number | 0 | NO | 外层容器的paddingVertical |
+| containerPaddingLeft | number | 0 | NO | 外层容器的paddingLeft |
+| containerPaddingRight | number | 0 | NO | 外层容器的paddingRight |
 | containerPaddingHorizontal | number | 根据验证码个数自动计算 | NO | 外层容器的paddingHorizontal |
+| containerPaddingLeft | number | 0 | NO | 外层容器的paddingLeft |
+| containerPaddingRight | number | 0 | NO | 外层容器的paddingRight |
 | containerBackgroundColor | string | #FDFFFD | NO | 外层容器的backgroundColor |
 | codeViewStyle | object | null | NO | 设置数字框的样式，(等同于 View 的样式设置，本质上是个 View) |
 | codeViewWidth | number | 根据验证码个数自动计算 | NO | 文本框的宽度 |
@@ -145,6 +150,9 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | coverStyle | object | null | NO | 遮挡层的样式，(等同于 View 的样式设置，本质上是个 View) |
 | coverRadius | number | codeFontSize / 2 | NO | 遮挡层的半径，默认是个圆点（只在 secureTextEntry 为 true 时生效） |
 | coverColor | string | black | NO | 遮挡层的颜色，（只在 secureTextEntry 为 true 时生效） |
+| warningTitle | string | black | NO | 输入内容非数字时的，提示框的标题 |
+| warningContent | string | black | NO | 输入内容非数字时的，提示框的正文内容 |
+| warningButtonText | string | black | NO | 输入内容非数字时的，提示框的按钮文本 |
 
 ## **可调用的方法**
 

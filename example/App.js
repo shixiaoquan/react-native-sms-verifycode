@@ -67,40 +67,40 @@ class App extends Component {
         <SMSVerifyCode
           ref={this.bindRef}
 
-          verifyCodeLength={4}
+          // verifyCodeLength={5}
 
           // containerStyle={}
-          containerPaddingVertical={30}
-          containerPaddingTop={60}
-          containerPaddingBottom={10}
-          // containerPaddingHorizontal={}
-          containerPaddingLeft={40}
-          containerPaddingRight={10}
-          containerBackgroundColor="blue"
+          // containerPaddingVertical={30}
+          // containerPaddingTop={60}
+          // containerPaddingBottom={10}
+          containerPaddingHorizontal={30}
+          // containerPaddingLeft={40}
+          // containerPaddingRight={10}
+          // containerBackgroundColor="blue"
 
-          // codeViewStyle={}
-          codeViewBorderColor="black"
-          focusedCodeViewBorderColor="red"
-          codeViewWidth={35}
-          codeViewHeight={40}
-          codeViewBorderWidth={1}
-          codeViewBorderRadius={20}
-          codeViewBackgroundColor="white"
+          // // codeViewStyle={}
+          // codeViewBorderColor="black"
+          // focusedCodeViewBorderColor="red"
+          // codeViewWidth={35}
+          // codeViewHeight={40}
+          // codeViewBorderWidth={1}
+          // codeViewBorderRadius={20}
+          // codeViewBackgroundColor="white"
 
-          // codeStyle={}
-          codeFontSize={20}
-          codeColor="yellow"
+          // // codeStyle={}
+          // codeFontSize={20}
+          // codeColor="yellow"
 
-          secureTextEntry
-          // coverStyle={}
-          coverRadius={21}
-          coverColor="blue"
+          // secureTextEntry
+          // // coverStyle={}
+          // coverRadius={21}
+          // coverColor="blue"
 
-          onInputCompleted={this.onInputCompleted}
+          // onInputCompleted={this.onInputCompleted}
 
-          warningTitle="haha"
-          warningContent="no number"
-          warningButtonText="okok"
+          // warningTitle="haha"
+          // warningContent="no number"
+          // warningButtonText="okok"
         />
         <TouchableOpacity
           onPress={this.reset}
