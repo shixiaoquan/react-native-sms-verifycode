@@ -34,27 +34,31 @@ const styles = StyleSheet.create({
   },
   defaultCoverStyle: {
     position: 'absolute',
-    width: Constants.codeFontSize,
-    height: Constants.codeFontSize,
-    borderRadius: Constants.codeFontSize / 2,
+    width: Constants.codeFontSize * 1.15,
+    height: Constants.codeFontSize * 1.15,
+    borderRadius: (Constants.codeFontSize * 1.15) / 2,
     backgroundColor: 'transparent',
   },
 });
 
 const CodeView = (props) => {
   const {
-    verifyCodeLength,
     codeArray,
     coverBGColorList,
     gapWidth,
 
     containerStyle,
     containerPaddingVertical,
+    containerPaddingTop,
+    containerPaddingBottom,
     containerPaddingHorizontal,
+    containerPaddingLeft,
+    containerPaddingRight,
     containerBackgroundColor,
 
     codeViewStyle,
     codeViewWidth,
+    codeViewHeight,
     codeViewBackgroundColor,
     codeViewBorderWidth,
     codeViewBorderColor,
@@ -70,10 +74,14 @@ const CodeView = (props) => {
     coverRadius,
   } = props;
 
-  const codeArrayLength = codeArray.length;
+  const foucsedIndex = codeArray.filter(item => item !== '').length;
 
   const cPaddingVertical = containerPaddingVertical ? { paddingVertical: containerPaddingVertical } : {};
+  const cPaddingTop = containerPaddingTop ? { paddingTop: containerPaddingTop } : {};
+  const cPaddingBottom = containerPaddingBottom ? { paddingBottom: containerPaddingBottom } : {};
   const cPaddingHorizontal = containerPaddingHorizontal ? { paddingHorizontal: containerPaddingHorizontal } : {};
+  const cPaddingLeft = containerPaddingLeft ? { paddingLeft: containerPaddingLeft } : {};
+  const cPaddingRight = containerPaddingRight ? { paddingRight: containerPaddingRight } : {};
   const cBackgroundColor = containerBackgroundColor ? { backgroundColor: containerBackgroundColor } : {};
 
   return (
@@ -82,25 +90,29 @@ const CodeView = (props) => {
       containerStyle,
       {
         ...cPaddingVertical,
+        ...cPaddingTop,
+        ...cPaddingBottom,
         ...cPaddingHorizontal,
+        ...cPaddingLeft,
+        ...cPaddingRight,
         ...cBackgroundColor,
       },
     ]}
     >
       {
         codeArray.map((code, index) => {
-          const marginLeft = gapWidth;
-          const marginRight = index === verifyCodeLength - 1 ? gapWidth : 0;
+          const marginLeft = index === 0 ? 0 : gapWidth;
+          const marginRight = 0;
 
           // code view style
           const viewWidth = codeViewWidth ? { width: codeViewWidth } : {};
-          const viewHight = codeViewWidth ? { height: codeViewWidth } : {};
+          const viewHight = codeViewHeight ? { height: codeViewHeight } : { height: codeViewWidth };
           const viewBackgroundColor = codeViewBackgroundColor ? { backgroundColor: codeViewBackgroundColor } : {};
           const viewBorderWidth = codeViewBorderWidth ? { borderWidth: codeViewBorderWidth } : {};
           const viewBorderRadius = codeViewBorderRadius ? { borderRadius: codeViewBorderRadius } : {};
           const viewBorderColor = codeViewBorderColor ? { borderColor: codeViewBorderColor } : {};
           const focusedViewBorderColor = focusedCodeViewBorderColor ? { borderColor: focusedCodeViewBorderColor } : {};
-          const vbColor = codeArrayLength === index ? focusedViewBorderColor : viewBorderColor;
+          const vbColor = foucsedIndex === index ? focusedViewBorderColor : viewBorderColor;
 
           // code style
           const cFontSize = codeFontSize ? { fontSize: codeFontSize } : {};
@@ -173,13 +185,18 @@ CodeView.propTypes = {
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
   containerPaddingVertical: PropTypes.number,
+  containerPaddingTop: PropTypes.number,
+  containerPaddingBottom: PropTypes.number,
   containerPaddingHorizontal: PropTypes.number,
+  containerPaddingLeft: PropTypes.number,
+  containerPaddingRight: PropTypes.number,
   containerBackgroundColor: PropTypes.string,
 
   codeViewStyle: PropTypes.oneOfType([PropTypes.object]),
   codeViewBorderColor: PropTypes.string,
   focusedCodeViewBorderColor: PropTypes.string,
   codeViewWidth: PropTypes.number.isRequired,
+  codeViewHeight: PropTypes.number,
   codeViewBorderWidth: PropTypes.number,
   codeViewBorderRadius: PropTypes.number,
   codeViewBackgroundColor: PropTypes.string,
@@ -200,13 +217,17 @@ CodeView.defaultProps = {
 
   containerStyle: null,
   containerPaddingVertical: null,
+  containerPaddingTop: null,
+  containerPaddingBottom: null,
   containerPaddingHorizontal: null,
+  containerPaddingLeft: null,
+  containerPaddingRight: null,
   containerBackgroundColor: null,
 
   codeViewStyle: null,
   codeViewBorderColor: null,
   focusedCodeViewBorderColor: Colors.focusedCodeViewBorderColor,
-  // codeViewWidth: null,
+  codeViewHeight: null,
   codeViewBorderWidth: null,
   codeViewBorderRadius: null,
   codeViewBackgroundColor: null,

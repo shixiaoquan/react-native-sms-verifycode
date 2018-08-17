@@ -9,6 +9,9 @@
 
 在线Demo查看地址 [Expo](https://snack.expo.io/@shixiaoquan/-react-native-sms-verifycode-example)
 
+## 整体的思路大概是这样的，上个优秀的手绘图 🙈 🙈 🙈
+![design](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/design.jpg)
+
 ## 安装
 
 ```bash

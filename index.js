@@ -200,32 +200,21 @@ class VerifyCode extends Component {
   bindRef = (ref) => { this.textInput = ref; };
 
   render() {
-    let gapWidth = 0;
-    let newCodeViewWidth = 0;
-    const { codeViewWidth } = this.props;
-    const { verifyCodeLength } = this.props;
-    const { containerPaddingHorizontal } = this.props;
-    if (codeViewWidth) {
-      if (containerPaddingHorizontal) {
-        gapWidth = (getScreenWidth() - (2 * containerPaddingHorizontal)) / ((3 * verifyCodeLength) + 1);
-      } else {
-        gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
-      }
-      newCodeViewWidth = codeViewWidth;
-    } else {
-      if (containerPaddingHorizontal) {
-        gapWidth = (getScreenWidth() - (2 * containerPaddingHorizontal)) / ((3 * verifyCodeLength) + 1);
-      } else {
-        gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
-      }
-      newCodeViewWidth = 2 * gapWidth;
-    }
     const {
+      verifyCodeLength,
+
       containerStyle,
-      containerPaddingVertical = 0,
-      containerBackgroundColor = Colors.containerBackgroundColor,
+      containerPaddingVertical,
+      containerPaddingTop,
+      containerPaddingBottom,
+      containerPaddingHorizontal,
+      containerPaddingLeft,
+      containerPaddingRight,
+      containerBackgroundColor,
 
       codeViewStyle,
+      codeViewWidth,
+      codeViewHeight,
       codeViewBackgroundColor,
       codeViewBorderWidth,
       codeViewBorderColor,
@@ -237,6 +226,32 @@ class VerifyCode extends Component {
       codeColor,
       secureTextEntry,
     } = this.props;
+    let gapWidth = 0;
+    let newCodeViewWidth = 0;
+    if (codeViewWidth) {
+      gapWidth = (
+        getScreenWidth()
+        - (containerPaddingLeft || containerPaddingHorizontal) - (containerPaddingRight || containerPaddingHorizontal)
+        - (verifyCodeLength * codeViewWidth)
+      ) / (verifyCodeLength - 1);
+      // if (containerPaddingHorizontal) {
+
+      // } else {
+      //   gapWidth = (getScreenWidth() - (verifyCodeLength * codeViewWidth)) / (verifyCodeLength + 1);
+      // }
+      newCodeViewWidth = codeViewWidth;
+    } else {
+      gapWidth = (
+        getScreenWidth()
+        - (containerPaddingLeft || containerPaddingHorizontal) - (containerPaddingRight || containerPaddingHorizontal)
+      ) / ((3 * verifyCodeLength) - 1);
+      // if (containerPaddingHorizontal) {
+
+      // } else {
+      //   gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
+      // }
+      newCodeViewWidth = 2 * gapWidth;
+    }
 
     return (
       <TouchableOpacity
@@ -270,13 +285,18 @@ class VerifyCode extends Component {
 
           containerStyle={containerStyle}
           containerPaddingVertical={containerPaddingVertical}
+          containerPaddingTop={containerPaddingTop}
+          containerPaddingBottom={containerPaddingBottom}
           containerPaddingHorizontal={containerPaddingHorizontal}
+          containerPaddingLeft={containerPaddingLeft}
+          containerPaddingRight={containerPaddingRight}
           containerBackgroundColor={containerBackgroundColor}
 
           codeViewStyle={codeViewStyle}
           codeViewBorderColor={codeViewBorderColor}
           focusedCodeViewBorderColor={focusedCodeViewBorderColor}
           codeViewWidth={newCodeViewWidth}
+          codeViewHeight={codeViewHeight}
           codeViewBorderWidth={codeViewBorderWidth}
           codeViewBorderRadius={codeViewBorderRadius}
           codeViewBackgroundColor={codeViewBackgroundColor}
@@ -296,13 +316,18 @@ VerifyCode.propTypes = {
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
   containerPaddingVertical: PropTypes.number,
+  containerPaddingTop: PropTypes.number,
+  containerPaddingBottom: PropTypes.number,
   containerPaddingHorizontal: PropTypes.number,
+  containerPaddingLeft: PropTypes.number,
+  containerPaddingRight: PropTypes.number,
   containerBackgroundColor: PropTypes.string,
 
   codeViewStyle: PropTypes.oneOfType([PropTypes.object]),
   codeViewBorderColor: PropTypes.string,
   focusedCodeViewBorderColor: PropTypes.string,
   codeViewWidth: PropTypes.number,
+  codeViewHeight: PropTypes.number,
   codeViewBorderWidth: PropTypes.number,
   codeViewBorderRadius: PropTypes.number,
   codeViewBackgroundColor: PropTypes.string,
@@ -328,13 +353,18 @@ VerifyCode.defaultProps = {
 
   containerStyle: null,
   containerPaddingVertical: null,
+  containerPaddingTop: null,
+  containerPaddingBottom: null,
   containerPaddingHorizontal: null,
+  containerPaddingLeft: null,
+  containerPaddingRight: null,
   containerBackgroundColor: null,
 
   codeViewStyle: null,
   codeViewBorderColor: null,
   focusedCodeViewBorderColor: Colors.focusedCodeViewBorderColor,
   codeViewWidth: null,
+  codeViewHeight: null,
   codeViewBorderWidth: null,
   codeViewBorderRadius: null,
   codeViewBackgroundColor: null,

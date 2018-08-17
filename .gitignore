@@ -51,3 +51,8 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+
+# npm pack
+#
+/react-native-sms-verifycode*.tgz

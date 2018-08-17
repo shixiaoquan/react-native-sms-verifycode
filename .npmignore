@@ -1,2 +1,6 @@
 screencaptures/
 example/
+
+# npm pack
+#
+/react-native-sms-verifycode*.tgz
