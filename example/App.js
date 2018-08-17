@@ -66,27 +66,41 @@ class App extends Component {
       <View style={styles.container}>
         <SMSVerifyCode
           ref={this.bindRef}
-          onInputCompleted={this.onInputCompleted}
-          // containerPaddingVertical={10}
-          // containerPaddingHorizontal={50}
-          // containerBackgroundColor="#8DC647"
-          // codeViewBorderColor="#000000"
-          // focusedCodeViewBorderColor="#0000FF"
-          // codeViewBorderWidth={3}
-          // codeViewBorderRadius={16}
 
-          verifyCodeLength={6}
-          containerPaddingVertical={10}
-          containerPaddingHorizontal={50}
-          containerBackgroundColor="#8DC647"
-          codeBorderColor="#000000"
-          codeFocusedBorderColor="#0000FF"
-          codeBorderWidth={3}
-          codeBorderRadius={16}
+          verifyCodeLength={4}
+
+          // containerStyle={}
+          containerPaddingVertical={30}
+          containerPaddingTop={60}
+          containerPaddingBottom={10}
+          // containerPaddingHorizontal={}
+          containerPaddingLeft={40}
+          containerPaddingRight={10}
+          containerBackgroundColor="blue"
+
+          // codeViewStyle={}
+          codeViewBorderColor="black"
+          focusedCodeViewBorderColor="red"
+          codeViewWidth={35}
+          codeViewHeight={40}
+          codeViewBorderWidth={1}
+          codeViewBorderRadius={20}
+          codeViewBackgroundColor="white"
+
+          // codeStyle={}
           codeFontSize={20}
-          codeFontColor="#D784EB"
+          codeColor="yellow"
+
           secureTextEntry
-          codeViewStyle={styles.codeBorderStyle}
+          // coverStyle={}
+          coverRadius={21}
+          coverColor="blue"
+
+          onInputCompleted={this.onInputCompleted}
+
+          warningTitle="haha"
+          warningContent="no number"
+          warningButtonText="okok"
         />
         <TouchableOpacity
           onPress={this.reset}
