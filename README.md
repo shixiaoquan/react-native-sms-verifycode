@@ -1,4 +1,4 @@
-### [中文版](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/develop/README-zh.md)
+### [中文版](https://github.com/shixiaoquan/react-native-sms-verifycode/blob/master/README-zh.md)
 ## Screen Capture
 
 ### Support for entering passwords, compatible with iOS and Android
@@ -6,6 +6,9 @@
 |![android](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-android.gif)|![iOS](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-ios.gif)|![Password](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/react-native-sms-verifycode-password.gif)|
 |:-:|:-:|:-:|
 | on Android | on iOS | use Password |
+
+## The design idea is probably like this, showing an excellent hand drawing 🙈 🙈 🙈
+![design](https://raw.githubusercontent.com/shixiaoquan/react-native-sms-verifycode/master/screencaptures/design.png)
 
 ## Installation
 
