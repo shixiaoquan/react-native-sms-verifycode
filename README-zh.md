@@ -128,6 +128,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 
 | Prop | PropType | Default Value |isRequired| Description |
 |:-:|:-:|:-:|:-:|:-:|
+| autoFocus | bool | false | NO | 默认是否自动获取焦点 |
 | verifyCodeLength | number | 6 | NO | 验证码的个数 |
 | containerStyle | object | null | NO | 设置container的样式，改属性设置的级别低于后面3个，如果重复会被覆盖，该样式和 View 支持的样式一样 |
 | containerPaddingVertical | number | 0 | NO | 外层容器的paddingVertical |

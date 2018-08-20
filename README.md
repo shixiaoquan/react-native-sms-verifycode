@@ -126,6 +126,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 
 | Prop | PropType | Default Value |isRequired| Description |
 |:-:|:-:|:-:|:-:|:-:|
+| autoFocus | bool | false | NO | Whether to automatically get the focus by default |
 | verifyCodeLength | number | 6 | NO | length of the verification code |
 | containerStyle | object | null | NO | set container style |
 | containerPaddingVertical | number | 0 | NO | container's paddingVertical |
