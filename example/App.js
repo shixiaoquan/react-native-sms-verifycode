@@ -66,7 +66,7 @@ class App extends Component {
       <View style={styles.container}>
         <SMSVerifyCode
           ref={this.bindRef}
-
+          autoFocus
           verifyCodeLength={4}
 
           // containerStyle={}

@@ -19,6 +19,7 @@ export const Colors = {
 };
 
 export const Constants = {
+  autoFocus: false,
   verifyCodeLength: 5,
   codeViewWidth: getScreenWidth() / ((3 * 5) + 1),
   codeViewBorderWidth: 1.5,

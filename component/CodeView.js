@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
 
 const CodeView = (props) => {
   const {
+    focused,
     codeArray,
     coverBGColorList,
     gapWidth,
@@ -112,7 +113,7 @@ const CodeView = (props) => {
           const viewBorderRadius = codeViewBorderRadius ? { borderRadius: codeViewBorderRadius } : {};
           const viewBorderColor = codeViewBorderColor ? { borderColor: codeViewBorderColor } : {};
           const focusedViewBorderColor = focusedCodeViewBorderColor ? { borderColor: focusedCodeViewBorderColor } : {};
-          const vbColor = foucsedIndex === index ? focusedViewBorderColor : viewBorderColor;
+          const vbColor = (foucsedIndex === index && focused) ? focusedViewBorderColor : viewBorderColor;
 
           // code style
           const cFontSize = codeFontSize ? { fontSize: codeFontSize } : {};
@@ -175,6 +176,7 @@ const CodeView = (props) => {
 };
 
 CodeView.propTypes = {
+  focused: PropTypes.bool,
   codeArray: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -211,6 +213,7 @@ CodeView.propTypes = {
 };
 
 CodeView.defaultProps = {
+  focused: false,
   codeArray: [],
   gapWidth: 0,
   verifyCodeLength: 0,

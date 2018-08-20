@@ -29,12 +29,16 @@ import {
 class VerifyCode extends Component {
   constructor(props) {
     super(props);
-    const { verifyCodeLength } = props;
+    const {
+      verifyCodeLength,
+      autoFocus,
+    } = props;
     const codeArray = getCodeArray([], verifyCodeLength);
     this.state = {
       text: '',
       codeArray,
       coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
+      focused: autoFocus,
     };
     // 当前输入的code个数
     this.curCodeLength = 0;
@@ -149,6 +153,7 @@ class VerifyCode extends Component {
 
   keyboardDidHide() {
     this.keyboardShow = false;
+    this.setState({ focused: false });
   }
 
   reset = () => {
@@ -165,9 +170,13 @@ class VerifyCode extends Component {
   blur = () => {
     this.textInput.focus();
     this.textInput.blur();
+    this.setState({ focused: false });
   }
 
-  focus = () => this.textInput.focus()
+  focus = () => {
+    this.textInput.focus();
+    this.setState({ focused: true });
+  }
 
   showAlert = (text, codeArray, codeLength) => {
     this.curCodeLength = codeLength - 1;
@@ -200,7 +209,9 @@ class VerifyCode extends Component {
   bindRef = (ref) => { this.textInput = ref; };
 
   render() {
+    const { focused } = this.state;
     const {
+      autoFocus,
       verifyCodeLength,
 
       containerStyle,
@@ -266,7 +277,7 @@ class VerifyCode extends Component {
           ref={this.bindRef}
           underlineColorAndroid="transparent"
           caretHidden
-          autoFocus
+          autoFocus={autoFocus}
           maxLength={verifyCodeLength}
           keyboardType="numeric"
           style={styles.hiddenTextInput}
@@ -278,6 +289,7 @@ class VerifyCode extends Component {
           }}
         />
         <CodeView
+          focused={focused}
           gapWidth={gapWidth}
           codeArray={this.state.codeArray}
           coverBGColorList={this.state.coverBGColorList}
@@ -312,6 +324,7 @@ class VerifyCode extends Component {
 }
 
 VerifyCode.propTypes = {
+  autoFocus: PropTypes.bool,
   verifyCodeLength: PropTypes.number,
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
@@ -349,6 +362,7 @@ VerifyCode.propTypes = {
 };
 
 VerifyCode.defaultProps = {
+  autoFocus: Constants.autoFocus,
   verifyCodeLength: Constants.verifyCodeLength,
 
   containerStyle: null,
