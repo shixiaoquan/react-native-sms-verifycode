@@ -13,6 +13,8 @@ import {
   Keyboard,
   TextInput,
   TouchableOpacity,
+  AppState,
+  Platform,
 } from 'react-native';
 
 import CodeView from './component/CodeView';
@@ -53,11 +55,23 @@ class VerifyCode extends Component {
       'keyboardDidHide',
       this.keyboardDidHide.bind(this),
     );
+    AppState.addEventListener('change', this.onAppStateChange);
   }
 
   componentWillUnmount() {
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
+    AppState.removeEventListener('change', this.onAppStateChange);
+  }
+
+  onAppStateChange = (nextAppState) => {
+    if (Platform.OS === 'android') {
+      if (nextAppState === 'background') {
+        this.preFocused = this.state.focused;
+      } else if (nextAppState === 'active' && this.preFocused) {
+        this.setState({ focused: true });
+      }
+    }
   }
 
   onChangeText = (text) => {
@@ -149,11 +163,15 @@ class VerifyCode extends Component {
 
   keyboardDidShow() {
     this.keyboardShow = true;
+    this.setState({ focused: true });
+    // this.focused = false;
   }
 
   keyboardDidHide() {
     this.keyboardShow = false;
-    this.setState({ focused: false });
+    if (this.state.focused) {
+      this.setState({ focused: false });
+    }
   }
 
   reset = () => {
