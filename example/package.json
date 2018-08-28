@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "iPhoneX": "react-native run-ios --simulator 'iPhone X'",
+    "iPhone8": "react-native run-ios --simulator 'iPhone 8'",
+    "iPhone6": "react-native run-ios --simulator 'iPhone 6'",
     "refresh": "cd ../ && npm pack && cd example/ && npm install /Users/edmond/ReactNativeProjects/react-native-sms-verifycode/react-native-sms-verifycode-1.1.6.tgz",
     "test": "jest"
   },
