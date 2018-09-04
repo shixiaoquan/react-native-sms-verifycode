@@ -158,6 +158,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 
 | Name | isRequired | Description |
 |:-:|:-:|:-:|
+| onInputChangeText | NO | When the text in the input box changes, the method is called, and the latest value is returned. |
 | onInputCompleted | NO | Callback method when input is complete |
 | reset | NO | Clear the input and set the focus to the first input box, **call using ref** |
 | blur | NO | Hide the keyboard, **call using ref** |
