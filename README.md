@@ -128,6 +128,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 |:-:|:-:|:-:|:-:|:-:|
 | autoFocus | bool | false | NO | Whether to automatically get the focus by default |
 | verifyCodeLength | number | 6 | NO | length of the verification code |
+| initialCodes | array | 6 | NO | The default is empty, if set, it will be automatically populated |
 | containerStyle | object | null | NO | set container style |
 | containerPaddingVertical | number | 0 | NO | container's paddingVertical |
 | containerPaddingLeft | number | 0 | NO | set container paddingLeft |

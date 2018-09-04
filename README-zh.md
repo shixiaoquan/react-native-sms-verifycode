@@ -63,7 +63,7 @@ reset = () => {
 import SMSVerifyCode from 'react-native-sms-verifycode'
 ...
 <SMSVerifyCode
-  verifyCodeLength={4} // 根据需要设置任意数，类型必须时number
+  initialCodes={4} // 根据需要设置任意数，类型必须时number
 />
 ```
 
@@ -130,6 +130,7 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 |:-:|:-:|:-:|:-:|:-:|
 | autoFocus | bool | false | NO | 默认是否自动获取焦点 |
 | verifyCodeLength | number | 6 | NO | 验证码的个数 |
+| initialCodes | array | 6 | NO | 初始值，默认为空，若设置，则自动填充 |
 | containerStyle | object | null | NO | 设置container的样式，改属性设置的级别低于后面3个，如果重复会被覆盖，该样式和 View 支持的样式一样 |
 | containerPaddingVertical | number | 0 | NO | 外层容器的paddingVertical |
 | containerPaddingLeft | number | 0 | NO | 外层容器的paddingLeft |

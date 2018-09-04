@@ -76,7 +76,7 @@ class App extends Component {
           ref={this.bindRef}
           autoFocus
           verifyCodeLength={4}
-
+          initialCodes={['1', 2, '', ' ', '       ']}
           // containerStyle={}
           containerPaddingVertical={30}
           containerPaddingTop={60}
@@ -84,7 +84,7 @@ class App extends Component {
           // containerPaddingHorizontal={}
           containerPaddingLeft={40}
           containerPaddingRight={10}
-          containerBackgroundColor="blue"
+          // containerBackgroundColor="blue"
 
           // codeViewStyle={}
           codeViewBorderColor="black"
@@ -99,7 +99,7 @@ class App extends Component {
           codeFontSize={20}
           codeColor="yellow"
 
-          secureTextEntry
+          // secureTextEntry
           // coverStyle={}
           coverRadius={21}
           coverColor="blue"
@@ -115,7 +115,7 @@ class App extends Component {
         <Text>{`changeText:${this.state.text}`}</Text>
         <TextInput
           placeholder="1234566"
-          style={{ width: 200, height: 60, backgroundColor: 'red' }}
+          style={{ width: 200, height: 60 }}
         />
         <TouchableOpacity
           onPress={this.reset}

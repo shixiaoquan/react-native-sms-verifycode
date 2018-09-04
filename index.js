@@ -27,23 +27,29 @@ import {
   Constants,
 } from './util';
 
-
 class VerifyCode extends Component {
   constructor(props) {
     super(props);
     const {
       verifyCodeLength,
       autoFocus,
+      initialCodes,
     } = props;
-    const codeArray = getCodeArray([], verifyCodeLength);
+    const codes = initialCodes.filter((item) => {
+      const str = `${item}`.replace(/ /g, '');
+      if (str) return true;
+      return false;
+    });
+    const codeArray = getCodeArray(codes, verifyCodeLength);
+    const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
     this.state = {
-      text: '',
+      text: codes.reduce(reducer),
       codeArray,
       coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
       focused: autoFocus,
     };
     // 当前输入的code个数
-    this.curCodeLength = 0;
+    this.curCodeLength = codes.length;
   }
 
   componentDidMount() {
@@ -97,7 +103,7 @@ class VerifyCode extends Component {
       // add
       if (codeLength > this.curCodeLength) {
         if (isNaN(codeArray[codeLength - 1]) || codeArray[codeLength - 1] === ' ') {
-          console.log('1 codeArray:', codeArray);
+          // console.log('1 codeArray:', codeArray);
           codeArray = codeArray.filter(code => !isNaN(code) && code !== ' ');
           // console.log('2 codeArray:', codeArray)
           const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
@@ -359,6 +365,10 @@ class VerifyCode extends Component {
 VerifyCode.propTypes = {
   autoFocus: PropTypes.bool,
   verifyCodeLength: PropTypes.number,
+  initialCodes: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ])),
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
   containerPaddingVertical: PropTypes.number,
@@ -398,6 +408,7 @@ VerifyCode.propTypes = {
 VerifyCode.defaultProps = {
   autoFocus: Constants.autoFocus,
   verifyCodeLength: Constants.verifyCodeLength,
+  initialCodes: [],
 
   containerStyle: null,
   containerPaddingVertical: null,
