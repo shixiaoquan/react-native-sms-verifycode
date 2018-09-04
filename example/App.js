@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, Alert, TextInput } from 'react-native';
 
 import SMSVerifyCode from 'react-native-sms-verifycode';
 
@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
 });
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: '' };
+  }
   onInputCompleted = (text) => {
     Alert.alert(
       text,
@@ -53,6 +57,10 @@ class App extends Component {
       ],
       { cancelable: false },
     );
+  }
+
+  onInputChangeText = (text) => {
+    this.setState({ text });
   }
 
   blur = () => this.verifycode.blur()
@@ -98,9 +106,16 @@ class App extends Component {
 
           onInputCompleted={this.onInputCompleted}
 
+          onInputChangeText={this.onInputChangeText}
+
           warningTitle="haha"
           warningContent="no number"
           warningButtonText="okok"
+        />
+        <Text>{`changeText:${this.state.text}`}</Text>
+        <TextInput
+          placeholder="1234566"
+          style={{ width: 200, height: 60, backgroundColor: 'red' }}
         />
         <TouchableOpacity
           onPress={this.reset}

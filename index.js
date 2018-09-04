@@ -76,12 +76,16 @@ class VerifyCode extends Component {
 
   onChangeText = (text) => {
     clearTimeout(this.timeout);
-    const { verifyCodeLength = Constant.verifyCodeLength } = this.props;
+    const {
+      verifyCodeLength = Constant.verifyCodeLength,
+      onInputChangeText,
+    } = this.props;
     // console.log('text:', text)
     const codeLength = text.length;
     if (codeLength === 0) {
       const codeArray = getCodeArray([], verifyCodeLength);
       this.curCodeLength = 0;
+      onInputChangeText(text);
       this.setState({
         text: '',
         codeArray,
@@ -93,7 +97,7 @@ class VerifyCode extends Component {
       // add
       if (codeLength > this.curCodeLength) {
         if (isNaN(codeArray[codeLength - 1]) || codeArray[codeLength - 1] === ' ') {
-          // console.log('1 codeArray:', codeArray)
+          console.log('1 codeArray:', codeArray);
           codeArray = codeArray.filter(code => !isNaN(code) && code !== ' ');
           // console.log('2 codeArray:', codeArray)
           const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
@@ -105,6 +109,7 @@ class VerifyCode extends Component {
           }
           codeArray = getCodeArray(codeArray, verifyCodeLength);
           this.curCodeLength = codeLength;
+          onInputChangeText(text);
           this.setState(
             {
               text,
@@ -125,6 +130,7 @@ class VerifyCode extends Component {
       } else { // minus
         codeArray = getCodeArray(codeArray, verifyCodeLength);
         this.curCodeLength = codeLength;
+        onInputChangeText(text);
         this.setState({
           text,
           codeArray,
@@ -163,11 +169,15 @@ class VerifyCode extends Component {
 
   keyboardDidShow() {
     this.keyboardShow = true;
-    this.setState({ focused: true });
+    if (this.TextInputFocused) {
+      this.setState({ focused: true });
+    }
+    // this.setState({ focused: true });
     // this.focused = false;
   }
 
   keyboardDidHide() {
+    // this.TextInputFocused = false;
     this.keyboardShow = false;
     if (this.state.focused) {
       this.setState({ focused: false });
@@ -295,6 +305,11 @@ class VerifyCode extends Component {
           ref={this.bindRef}
           underlineColorAndroid="transparent"
           caretHidden
+          onBlur={() => {
+            this.TextInputFocused = false;
+            this.setState({ focused: false });
+          }}
+          onFocus={() => { this.TextInputFocused = true; }}
           autoFocus={autoFocus}
           maxLength={verifyCodeLength}
           keyboardType="numeric"
@@ -373,6 +388,7 @@ VerifyCode.propTypes = {
   coverColor: PropTypes.string,
 
   onInputCompleted: PropTypes.func,
+  onInputChangeText: PropTypes.func,
 
   warningTitle: PropTypes.string,
   warningContent: PropTypes.string,
@@ -411,6 +427,7 @@ VerifyCode.defaultProps = {
   coverColor: Colors.coverColor,
 
   onInputCompleted: null,
+  onInputChangeText: null,
 
   warningTitle: Constants.warningTitle,
   warningContent: Constants.warningContent,
