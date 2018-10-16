@@ -63,7 +63,7 @@ reset = () => {
 import SMSVerifyCode from 'react-native-sms-verifycode'
 ...
 <SMSVerifyCode
-  initialCodes={[4]} // 根据需要设置任意数，类型必须为array，值为number
+  verifyCodeLength={4} // 根据需要设置任意数，类型必须为number
 />
 ```
 
