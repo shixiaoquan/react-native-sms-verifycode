@@ -354,7 +354,7 @@ class VerifyCode extends Component {
 
           codeStyle={codeStyle}
           codeFontSize={codeFontSize}
-          codeFontColor={codeColor}
+          codeColor={codeColor}
           secureTextEntry={secureTextEntry}
         />
       </TouchableOpacity>
