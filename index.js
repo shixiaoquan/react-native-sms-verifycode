@@ -303,7 +303,9 @@ class VerifyCode extends Component {
         style={styles.container}
         activeOpacity={1}
         onPressIn={() => {
-          if (!this.keyboardShow) { this.blur(); }
+          if (!this.keyboardShow) {
+            this.blur();
+          }
         }}
         onPressOut={() => this.focus()}
       >
@@ -315,7 +317,9 @@ class VerifyCode extends Component {
             this.TextInputFocused = false;
             this.setState({ focused: false });
           }}
-          onFocus={() => { this.TextInputFocused = true; }}
+          onFocus={() => {
+            this.TextInputFocused = true;
+          }}
           autoFocus={autoFocus}
           maxLength={verifyCodeLength}
           keyboardType="numeric"
@@ -333,7 +337,6 @@ class VerifyCode extends Component {
           codeArray={this.state.codeArray}
           coverBGColorList={this.state.coverBGColorList}
           verifyCodeLength={verifyCodeLength}
-
           containerStyle={containerStyle}
           containerPaddingVertical={containerPaddingVertical}
           containerPaddingTop={containerPaddingTop}
@@ -342,7 +345,6 @@ class VerifyCode extends Component {
           containerPaddingLeft={containerPaddingLeft}
           containerPaddingRight={containerPaddingRight}
           containerBackgroundColor={containerBackgroundColor}
-
           codeViewStyle={codeViewStyle}
           codeViewBorderColor={codeViewBorderColor}
           focusedCodeViewBorderColor={focusedCodeViewBorderColor}
@@ -351,10 +353,9 @@ class VerifyCode extends Component {
           codeViewBorderWidth={codeViewBorderWidth}
           codeViewBorderRadius={codeViewBorderRadius}
           codeViewBackgroundColor={codeViewBackgroundColor}
-
           codeStyle={codeStyle}
           codeFontSize={codeFontSize}
-          codeFontColor={codeColor}
+          codeColor={codeColor}
           secureTextEntry={secureTextEntry}
         />
       </TouchableOpacity>
