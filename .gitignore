@@ -55,4 +55,4 @@ buck-out/
 
 # npm pack
 #
-/react-native-sms-verifycode*.tgz
+# /react-native-sms-verifycode*.tgz
