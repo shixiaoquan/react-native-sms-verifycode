@@ -4612,7 +4612,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -4685,6 +4685,17 @@ react-is@^16.4.1, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
+
+react-native-sms-verifycode@../react-native-sms-verifycode-2.4.1.tgz:
+  version "2.4.1"
+  resolved "../react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
+  dependencies:
+    prop-types "^15.6.2"
+
+"react-native-sms-verifycode@file:..":
+  version "2.4.1"
+  dependencies:
+    prop-types "^15.6.2"
 
 react-native@0.56.0:
   version "0.56.0"

@@ -1,8 +1,8 @@
 /*
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
-* @Last Modified by:   edmond
-* @Last Modified time: 2018-04-20 17:20:36
+ * @Last Modified by: Edmond.Shi
+ * @Last Modified time: 2020-05-20 09:43:39
 */
 
 
@@ -91,7 +91,7 @@ class VerifyCode extends Component {
     if (codeLength === 0) {
       const codeArray = getCodeArray([], verifyCodeLength);
       this.curCodeLength = 0;
-      onInputChangeText(text);
+      onInputChangeText && onInputChangeText(text);
       this.setState({
         text: '',
         codeArray,
@@ -115,7 +115,7 @@ class VerifyCode extends Component {
           }
           codeArray = getCodeArray(codeArray, verifyCodeLength);
           this.curCodeLength = codeLength;
-          onInputChangeText(text);
+          onInputChangeText && onInputChangeText(text);
           this.setState(
             {
               text,
@@ -136,7 +136,7 @@ class VerifyCode extends Component {
       } else { // minus
         codeArray = getCodeArray(codeArray, verifyCodeLength);
         this.curCodeLength = codeLength;
-        onInputChangeText(text);
+        onInputChangeText && onInputChangeText(text);
         this.setState({
           text,
           codeArray,

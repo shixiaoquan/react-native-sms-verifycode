@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, Alert, TextInput } from 'react-native';
 
-import SMSVerifyCode from '../index';
+import SMSVerifyCode from 'react-native-sms-verifycode';
 
 const styles = StyleSheet.create({
   container: {
