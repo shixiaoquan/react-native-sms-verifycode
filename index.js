@@ -70,6 +70,27 @@ class VerifyCode extends Component {
     AppState.removeEventListener('change', this.onAppStateChange);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.initialCodes !== prevProps.initialCodes) {
+      console.log("Props Updated libraray")
+      const codes = this.props.initialCodes.filter((item) => {
+        const str = `${item}`.replace(/ /g, '');
+        if (str) return true;
+        return false;
+      });
+      const codeArray = getCodeArray(codes, this.props.verifyCodeLength);
+      const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
+      this.setState({
+        text: codes.reduce(reducer),
+        codeArray,
+        coverBGColorList: this.getCoverBGColorList(codeArray, this.props.verifyCodeLength),
+        focused: this.props.autoFocus,
+      })
+      // 当前输入的code个数
+      this.curCodeLength = codes.length;
+    }
+  }
+
   onAppStateChange = (nextAppState) => {
     if (Platform.OS === 'android') {
       if (nextAppState === 'background') {
