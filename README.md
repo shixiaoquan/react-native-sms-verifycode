@@ -134,8 +134,6 @@ import SMSVerifyCode from 'react-native-sms-verifycode'
 | containerPaddingLeft | number | 0 | NO | set container paddingLeft |
 | containerPaddingRight | number | 0 | NO | set container paddingRight |
 | containerPaddingHorizontal | number | Automatic calculation based on the length of the verification code | NO | container's paddingHorizontal |
-| containerPaddingLeft | number | 0 | NO | set container paddingLeft |
-| containerPaddingRight | number | 0 | NO | set container paddingRight |
 | containerBackgroundColor | string | #FDFFFD | NO | container's backgroundColor |
 | codeViewStyle | object | null | NO | set code view style |
 | codeViewWidth | number | Automatic calculation based on the length of the verification code | NO |  width of code view |
