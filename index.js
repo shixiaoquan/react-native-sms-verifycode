@@ -2,7 +2,7 @@
 * @Author: shixiaoquan
 * @Date:   2018-03-20 17:48:11
  * @Last Modified by: Edmond.Shi
- * @Last Modified time: 2020-05-20 09:43:39
+ * @Last Modified time: 2020-05-22 10:07:50
 */
 
 
@@ -68,6 +68,9 @@ class VerifyCode extends Component {
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
     AppState.removeEventListener('change', this.onAppStateChange);
+    if(this.timeout) {
+      clearTimeout(this.timeout);
+    }
   }
 
   onAppStateChange = (nextAppState) => {
