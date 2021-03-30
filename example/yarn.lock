@@ -4686,14 +4686,10 @@ react-is@^16.4.1, react-is@^16.8.1:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-native-sms-verifycode@../react-native-sms-verifycode-2.4.1.tgz:
+react-native-sms-verifycode@2.4.1:
   version "2.4.1"
-  resolved "../react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
-  dependencies:
-    prop-types "^15.6.2"
-
-"react-native-sms-verifycode@file:..":
-  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-sms-verifycode/-/react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
+  integrity sha512-mPfXelEDZ4+iyLf7juGXHS9eE7gdRhSP8Cpbp1Lh403RMrV0ro44e53V9yLs/qysRKEVZw5vJdDmW47YB4O+cQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -6015,9 +6011,9 @@ xtend@~4.0.1:
   integrity sha1-u3J3n1+kZRhrH0OPZ0+jR/2121Q=
 
 y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npm.taobao.org/y18n/download/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 yallist@^2.1.2:
   version "2.1.2"
