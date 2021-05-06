@@ -3692,9 +3692,9 @@ lodash.throttle@^4.1.1:
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.6.1:
-  version "4.17.15"
-  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
@@ -4686,14 +4686,10 @@ react-is@^16.4.1, react-is@^16.8.1:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-native-sms-verifycode@../react-native-sms-verifycode-2.4.1.tgz:
+react-native-sms-verifycode@2.4.1:
   version "2.4.1"
-  resolved "../react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
-  dependencies:
-    prop-types "^15.6.2"
-
-"react-native-sms-verifycode@file:..":
-  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-sms-verifycode/-/react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
+  integrity sha512-mPfXelEDZ4+iyLf7juGXHS9eE7gdRhSP8Cpbp1Lh403RMrV0ro44e53V9yLs/qysRKEVZw5vJdDmW47YB4O+cQ==
   dependencies:
     prop-types "^15.6.2"
 
