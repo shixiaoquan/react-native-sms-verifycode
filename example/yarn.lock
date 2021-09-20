@@ -4686,14 +4686,10 @@ react-is@^16.4.1, react-is@^16.8.1:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-native-sms-verifycode@../react-native-sms-verifycode-2.4.1.tgz:
+react-native-sms-verifycode@2.4.1:
   version "2.4.1"
-  resolved "../react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
-  dependencies:
-    prop-types "^15.6.2"
-
-"react-native-sms-verifycode@file:..":
-  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-sms-verifycode/-/react-native-sms-verifycode-2.4.1.tgz#be7f3ec1728e58da3b6561108c9a5a32be71d675"
+  integrity sha512-mPfXelEDZ4+iyLf7juGXHS9eE7gdRhSP8Cpbp1Lh403RMrV0ro44e53V9yLs/qysRKEVZw5vJdDmW47YB4O+cQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5586,9 +5582,9 @@ tmp@^0.0.33:
     os-tmpdir "~1.0.2"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/tmpl/download/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^1.0.3:
   version "1.0.3"
