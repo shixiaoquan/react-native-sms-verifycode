@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
 const CodeView = (props) => {
   const {
     focused,
+    onContainerLayout,
     codeArray,
     coverBGColorList,
     gapWidth,
@@ -86,7 +87,9 @@ const CodeView = (props) => {
   const cBackgroundColor = containerBackgroundColor ? { backgroundColor: containerBackgroundColor } : {};
 
   return (
-    <View style={[
+    <View
+      onLayout={onContainerLayout}
+      style={[
       styles.defaultContainerStyle,
       containerStyle,
       {

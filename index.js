@@ -24,6 +24,7 @@ import {
   Constant,
   getScreenWidth,
   getCodeArray,
+  getCodeLayout,
   Constants,
 } from './util';
 
@@ -47,10 +48,18 @@ class VerifyCode extends Component {
       codeArray,
       coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
       focused: autoFocus,
+      containerWidth: getScreenWidth(),
     };
     // 当前输入的code个数
     this.curCodeLength = codes.length;
   }
+
+  onContainerLayout = (event) => {
+    const { width } = event.nativeEvent.layout;
+    if (width > 0 && Math.abs(width - this.state.containerWidth) > 0.5) {
+      this.setState({ containerWidth: width });
+    }
+  };
 
   componentDidMount() {
     this.keyboardDidShowListener = Keyboard.addListener(
@@ -295,32 +304,15 @@ class VerifyCode extends Component {
       codeColor,
       secureTextEntry,
     } = this.props;
-    let gapWidth = 0;
-    let newCodeViewWidth = 0;
-    if (codeViewWidth) {
-      gapWidth = (
-        getScreenWidth()
-        - (containerPaddingLeft || containerPaddingHorizontal) - (containerPaddingRight || containerPaddingHorizontal)
-        - (verifyCodeLength * codeViewWidth)
-      ) / (verifyCodeLength - 1);
-      // if (containerPaddingHorizontal) {
-
-      // } else {
-      //   gapWidth = (getScreenWidth() - (verifyCodeLength * codeViewWidth)) / (verifyCodeLength + 1);
-      // }
-      newCodeViewWidth = codeViewWidth;
-    } else {
-      gapWidth = (
-        getScreenWidth()
-        - (containerPaddingLeft || containerPaddingHorizontal) - (containerPaddingRight || containerPaddingHorizontal)
-      ) / ((3 * verifyCodeLength) - 1);
-      // if (containerPaddingHorizontal) {
-
-      // } else {
-      //   gapWidth = getScreenWidth() / ((3 * verifyCodeLength) + 1);
-      // }
-      newCodeViewWidth = 2 * gapWidth;
-    }
+    const layout = getCodeLayout(
+      this.state.containerWidth,
+      verifyCodeLength,
+      codeViewWidth,
+      containerPaddingLeft || containerPaddingHorizontal,
+      containerPaddingRight || containerPaddingHorizontal,
+    );
+    const { gapWidth } = layout;
+    const newCodeViewWidth = layout.codeViewWidth;
 
     return (
       <TouchableOpacity
@@ -357,6 +349,7 @@ class VerifyCode extends Component {
         />
         <CodeView
           focused={focused}
+          onContainerLayout={this.onContainerLayout}
           gapWidth={gapWidth}
           codeArray={this.state.codeArray}
           coverBGColorList={this.state.coverBGColorList}
