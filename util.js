@@ -31,6 +31,24 @@ export const Constants = {
   warningButtonText: 'OK',
 };
 
+export function normalizeInitialCodes(initialCodes) {
+  if (Array.isArray(initialCodes)) {
+    return initialCodes;
+  }
+  if (typeof initialCodes === 'string' || typeof initialCodes === 'number') {
+    return `${initialCodes}`.split('');
+  }
+  return [];
+}
+
+export function sanitizeInitialCodes(initialCodes) {
+  return normalizeInitialCodes(initialCodes).filter((item) => `${item}`.replace(/ /g, ''));
+}
+
+export function joinCodes(codes) {
+  return codes.reduce((accumulator, currentValue) => `${accumulator}${currentValue}`, '');
+}
+
 export function getCodeArray(codeArray, verifyCodeLength) {
   const codeArrayLength = codeArray.length;
   for (let i = 0; i < verifyCodeLength; i++) {
