@@ -26,7 +26,7 @@ export const Constants = {
   codeViewBorderRadius: 5,
   codeFontSize: 16,
   secureTextEntry: false,
-  warningTitle: 'Warining',
+  warningTitle: 'Warning',
   warningContent: 'Only numbers to be entered',
   warningButtonText: 'OK',
 };
