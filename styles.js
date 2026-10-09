@@ -13,9 +13,15 @@ const styles = StyleSheet.create({
   container: {
     width: getScreenWidth(),
   },
+  // Android 11 ignores keystrokes on a 0×0 or 1×1 TextInput.
+  // Keep a real box and draw the text transparent; the code cells show the value.
   hiddenTextInput: {
-    width: 1,
-    height: 1,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 48,
+    color: 'transparent',
     backgroundColor: 'transparent',
   },
 });
