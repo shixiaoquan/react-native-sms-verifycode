@@ -60,6 +60,23 @@ export function getCodeArray(codeArray, verifyCodeLength) {
   return codeArray;
 }
 
+export function getCodeLayout(containerWidth, verifyCodeLength, codeViewWidth, paddingLeft, paddingRight) {
+  const length = verifyCodeLength > 0 ? verifyCodeLength : 1;
+  const innerWidth = containerWidth - (paddingLeft || 0) - (paddingRight || 0);
+  if (codeViewWidth) {
+    const gapCount = Math.max(length - 1, 1);
+    return {
+      gapWidth: (innerWidth - (length * codeViewWidth)) / gapCount,
+      codeViewWidth,
+    };
+  }
+  const gapWidth = innerWidth / ((3 * length) - 1);
+  return {
+    gapWidth,
+    codeViewWidth: 2 * gapWidth,
+  };
+}
+
 // export function getCoverBGColorList(codeArray, verifyCodeLength) {
 //   const coverBGColorList = [];
 //   for (let i = 0; i < verifyCodeLength; i++) {
