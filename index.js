@@ -25,6 +25,8 @@ import {
   getScreenWidth,
   getCodeArray,
   Constants,
+  sanitizeInitialCodes,
+  joinCodes,
 } from './util';
 
 class VerifyCode extends Component {
@@ -35,15 +37,10 @@ class VerifyCode extends Component {
       autoFocus,
       initialCodes,
     } = props;
-    const codes = initialCodes.filter((item) => {
-      const str = `${item}`.replace(/ /g, '');
-      if (str) return true;
-      return false;
-    });
+    const codes = sanitizeInitialCodes(initialCodes);
     const codeArray = getCodeArray(codes, verifyCodeLength);
-    const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
     this.state = {
-      text: codes.reduce(reducer),
+      text: joinCodes(codes),
       codeArray,
       coverBGColorList: this.getCoverBGColorList(codeArray, verifyCodeLength),
       focused: autoFocus,
@@ -76,15 +73,10 @@ class VerifyCode extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.initialCodes !== prevProps.initialCodes) {
       console.log("Props Updated libraray")
-      const codes = this.props.initialCodes.filter((item) => {
-        const str = `${item}`.replace(/ /g, '');
-        if (str) return true;
-        return false;
-      });
+      const codes = sanitizeInitialCodes(this.props.initialCodes);
       const codeArray = getCodeArray(codes, this.props.verifyCodeLength);
-      const reducer = (accumulator, currentValue) => `${accumulator}${currentValue}`;
       this.setState({
-        text: codes.reduce(reducer),
+        text: joinCodes(codes),
         codeArray,
         coverBGColorList: this.getCoverBGColorList(codeArray, this.props.verifyCodeLength),
         focused: this.props.autoFocus,
@@ -390,10 +382,14 @@ class VerifyCode extends Component {
 VerifyCode.propTypes = {
   autoFocus: PropTypes.bool,
   verifyCodeLength: PropTypes.number,
-  initialCodes: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.number,
+  initialCodes: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ])),
     PropTypes.string,
-  ])),
+    PropTypes.number,
+  ]),
 
   containerStyle: PropTypes.oneOfType([PropTypes.object]),
   containerPaddingVertical: PropTypes.number,
